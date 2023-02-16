@@ -21,7 +21,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <form action="{{ route('user.search') }}" method="post" id="store-search">
+                        <form action="{{ route('user.search') }}" method="post" id="user-search">
                             @csrf
                             <div class="row">
                                 <div class="col-12 col-xl-2 my-2">

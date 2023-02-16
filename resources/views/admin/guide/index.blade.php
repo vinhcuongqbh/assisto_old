@@ -32,10 +32,10 @@
                         @csrf
                         <div class="card-body">
                             <div class="form-group row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <label for="guideFile">{{ __('guideFile') }}</label>
                                 </div>
-                                <div class="col-sm-9">
+                                <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="guideFile" name="guideFile"
@@ -43,6 +43,10 @@
                                             <label class="custom-file-label" for="guideFile">{{ __('chooseFile') }}</label>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="submit"
+                                        class="btn bg-olive text-white w-100">{{ __('update') }}</button>
                                 </div>
                                 @if (isset($guide))
                                     <div class="col-sm-12">
@@ -70,10 +74,7 @@
                                 @endif
                             </div>
                             <div class="form-group row justify-content-end">
-                                <div class="col-4 col-md-3">
-                                    <button type="submit"
-                                        class="btn bg-olive text-white w-100">{{ __('update') }}</button>
-                                </div>
+                                
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -107,7 +108,7 @@
                 errorElement: 'span',
                 errorPlacement: function(error, element) {
                     error.addClass('invalid-feedback');
-                    element.closest('.col-sm-9').append(error);
+                    element.closest('.col-sm-8').append(error);
 
                 },
                 highlight: function(element, errorClass, validClass) {

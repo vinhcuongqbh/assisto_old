@@ -57,7 +57,7 @@
                                         class="btn bg-olive text-white w-100 text-nowrap">{{ __('edit') }}</button></a>
                             </div>
                             <div class="col-4 col-md-3">
-                                <button onclick="javascript:history.back()" type="button"
+                                <a href="{{ route('user') }}"><button type="button"
                                     class="btn bg-olive text-white w-100 text-nowrap">{{ __('back') }}</button>
                             </div>
                         </div>

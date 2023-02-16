@@ -15,13 +15,22 @@ class UserController extends Controller
 {
     public function index()
     {
-        if (Auth::user()->roleId == 3) return redirect()->route('staff.store');
-
-        //Hiển thị danh sách Tài khoản đang sử dụng
-        $user = User::leftjoin('moz_roles', 'moz_roles.roleId', 'moz_users.roleId')
-            ->leftjoin('asahi_center', 'asahi_center.centerId', 'moz_users.centerId')
-            ->select('moz_users.*', 'moz_roles.roleName', 'asahi_center.centerName')
-            ->get();
+        if (Auth::user()->roleId == 3) {
+            return redirect()->route('staff.store');
+        } else if (Auth::user()->roleId == 2) {
+            //Hiển thị danh sách Tài khoản đang sử dụng
+            $user = User::leftjoin('moz_roles', 'moz_roles.roleId', 'moz_users.roleId')
+                ->leftjoin('asahi_center', 'asahi_center.centerId', 'moz_users.centerId')
+                ->where('moz_users.roleId', '<>', 1)
+                ->select('moz_users.*', 'moz_roles.roleName', 'asahi_center.centerName')
+                ->get();
+        } else {
+            //Hiển thị danh sách Tài khoản đang sử dụng
+            $user = User::leftjoin('moz_roles', 'moz_roles.roleId', 'moz_users.roleId')
+                ->leftjoin('asahi_center', 'asahi_center.centerId', 'moz_users.centerId')
+                ->select('moz_users.*', 'moz_roles.roleName', 'asahi_center.centerName')
+                ->get();
+        }
 
         return view('admin.user.index', ['users' => $user]);
     }
@@ -161,13 +170,13 @@ class UserController extends Controller
 
     public function search(Request $request)
     {
+        
         $user = User::leftjoin('moz_roles', 'moz_roles.roleId', 'moz_users.roleId')
             ->leftjoin('asahi_center', 'asahi_center.centerId', 'moz_users.centerId')
             ->select('moz_users.*', 'moz_roles.roleName', 'asahi_center.centerName');
 
         if (isset($request->userID)) $user->where('userId', $request->userID);
         if (isset($request->userName)) $user->where('name', 'LIKE', '%' . $request->userName . '%');
-
 
         $user = $user->get();
 

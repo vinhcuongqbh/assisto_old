@@ -7,7 +7,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\CenterController;
 use App\Http\Controllers\RouteController;
-use App\Http\Controllers\IncidentController;
 use App\Http\Controllers\TrackController;
 use App\Http\Controllers\GuideController;
 use App\Http\Controllers\SettingController;
