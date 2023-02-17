@@ -25,10 +25,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <a class="btn bg-olive text-white w-100 btn-lg" href="/admin/user">{{ __('userManagement') }}</a>
+                            <a class="btn bg-olive text-white w-100 btn-lg" href="/admin/center">{{ __('centerManagement') }}</a>
                         </div>
                         <div class="form-group">
-                            <a class="btn bg-olive text-white w-100 btn-lg" href="/admin/center">{{ __('centerManagement') }}</a>
+                            <a class="btn bg-olive text-white w-100 btn-lg" href="/admin/user">{{ __('userManagement') }}</a>
                         </div>
                         <div class="form-group">
                             <a class="btn bg-olive text-white w-100 btn-lg" href="/admin/store">{{ __('storeManagement') }}</a>
@@ -40,7 +40,10 @@
                             <a class="btn bg-olive text-white w-100 btn-lg" href="/admin/track">{{ __('trackReports') }}</a>
                         </div>
                         <div class="form-group">
-                            <a class="btn bg-olive text-white w-100 btn-lg" href="/admin/setting/guide">{{ __('guide') }}</a>
+                            <a class="btn bg-olive text-white w-100 btn-lg" href="/admin/setting/slogan">{{ __('slogan') }}</a>
+                        </div>
+                        <div class="form-group">
+                            <a class="btn bg-olive text-white w-100 btn-lg" href="/admin/guide">{{ __('guideManagement') }}</a>
                         </div>
                     </div>
                     <!-- /.card-body -->

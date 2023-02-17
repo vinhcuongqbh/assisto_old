@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     <div class="card-body m-0 p-0">
-                        <table id="result-table" class="table table-head-fixed table-bordered table-striped table-hover">
+                        <table id="result-table" class="table table-head-fixed table-hover">
                             <thead>
                                 <tr>
                                     <th class="text-center text-nowrap">{{ __('storeID') }}</th>
@@ -30,17 +30,23 @@
                                 @foreach ($stores as $store)
                                     <tr>
                                         <td class="text-center"><a href="{{ route('staff.store.show', $store->storeId) }}">{{ $store->storeId }}</a></td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <p class="text-bold">{{ $store->storeName }}</p>
-                                                    <ul>
-                                                        <li class="text-sm"><strong>{{ __('address') }}:</strong> {{ $store->storeAddr }}</li>
-                                                        <li class="text-sm"><strong>{{ __('telephone') }}:</strong> {{ $store->storeTel }}</li>
-                                                        <li class="text-sm"><strong>{{ __('centerName') }}:</strong> {{ $store->centerId }}</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                        <td class="p-0 m-0">
+                                            <table class="table table-borderless w-100">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="pl-0"><strong>{{ $store->storeName }}</strong></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-sm p-0"><strong>{{ __('address') }}:</strong> {{ $store->storeAddr }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-sm p-0"><strong>{{ __('telephone') }}:</strong> {{ $store->storeTel }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-sm p-0"><strong>{{ __('centerName') }}:</strong> {{ $store->centerId }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </td>
                                     </tr>
                                 @endforeach

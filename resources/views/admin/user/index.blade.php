@@ -21,7 +21,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <form action="{{ route('user.search') }}" method="post" id="user-search">
+                        <form action="{{ route('user.search') }}" method="post" id="store-search">
                             @csrf
                             <div class="row">
                                 <div class="col-12 col-xl-2 my-2">
@@ -54,7 +54,7 @@
                                     <th>{{ __('centerName') }}</th>
                                     <th>{{ __('userRole') }}</th>
                                     <th>{{ __('edit') }}</th>
-                                    <th>{{ __('delete') }}</th>
+                                    <th>{{ __('enable') }}/{{ __('disenable') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -78,13 +78,13 @@
                                                 <a href="{{ route('user.delete', $user->userId) }}"
                                                     onclick="return confirm('{{ __('deleteUser') }}')">
                                                     <button type="button"
-                                                        class="btn btn-danger text-white w-100 text-nowrap">{{ __('delete') }}</button>
+                                                        class="btn btn-danger text-white w-100 text-nowrap">{{ __('disenable') }}</button>
                                                 </a>
                                             @else
                                                 <a href="{{ route('user.restore', $user->userId) }}"
                                                     onclick="return confirm('{{ __('restoreUser') }}')">
                                                     <button type="button"
-                                                        class="btn bg-olive text-white w-100 text-nowrap">{{ __('restore') }}</button>
+                                                        class="btn bg-olive text-white w-100 text-nowrap">{{ __('enable') }}</button>
                                                 </a>
                                             @endif
                                         </td>

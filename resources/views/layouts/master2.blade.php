@@ -27,7 +27,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container">
                 <a href="/staff/" class="navbar-brand">
                     <img src="/img/logo.svg" alt="アシストロボ" class="img-size-64">
-                    <span class="brand-text font-weight-light">アシストロボ</span>
+                    <span class="brand-text font-weight-light">{{ Auth::user()->name }}</span>
                 </a>
 
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
@@ -54,8 +54,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <li class="nav-item">
                             <a href="/staff/guide" class="nav-link text-nowrap">{{ __('guide') }}</a>
                         </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
                             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false" class="nav-link dropdown-toggle">{{ __('language') }}</a>
@@ -64,15 +62,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <a href="/language/jp" class="dropdown-item text-center">{{ __('japanese') }}</a>
                             </div>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false" class="nav-link dropdown-toggle">{{ Auth::user()->name }}</a>
-                            <div class="dropdown-menu dropdown-menu-sm-left dropdown-menu-right">
+                        <li class="nav-item">
                                 <form action="{{ route('logout') }}" method="post">
                                     {{ csrf_field() }}
-                                    <input class="dropdown-item text-center" type="submit" value="{{ __('logout') }}">
+                                    <button class="nav-link text-nowrap btn" type="submit" >{{ __('logout') }}</button>
                                 </form>
-                            </div>
                         </li>
                     </ul>
                 </div>

@@ -23,7 +23,7 @@
                         <h2 class="card-title text-bold text-lg">{{ __('storeInformation') }}</h2>
                         <div class="card-tools">
                             <div class="input-group mb-3">
-                                <input id="asaboUrl" type="text" class="form-control" value="asabo://as.vivujp.com/staff/store/{{ $store->storeId }}/show" hidden="true">
+                                <input id="asaboUrl" type="text" class="form-control" value="https://as.vivujp.com/staff/store/{{ $store->storeId }}/show" hidden="true">
                                 <a onclick="copyText()" class="btn btn-info btn-sm">URLコピー</a>
                                 </div>
                         </div>

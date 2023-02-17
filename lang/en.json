@@ -131,5 +131,7 @@
     "comment": "Comment",
     "slogan": "Motto of the Month",
     "information":"Information",
-    "checked":"OK"
+    "checked":"OK",
+    "enable":"Enable",
+    "disenable":"Disenable"
 }

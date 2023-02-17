@@ -9,7 +9,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xl-6">
+            <div class="col-xl-8">
                 <div class="card card-default">
                     <div class="card-header">
                         <h3 class="card-title">{{ __('userInformation') }}</h3>
@@ -51,18 +51,12 @@
                                     class="form-control" disabled>
                             </div>
                         </div>
-                        <div class="form-group row justify-content-end">                            
-                            <div class="col-3">
-                                <a href="{{ route('user.edit', $user->userId) }}"><button type="button"
-                                        class="btn bg-olive text-white w-100 text-nowrap">{{ __('edit') }}</button></a>
-                            </div>
-                            <div class="col-4 col-md-3">
-                                <a href="{{ route('user') }}"><button type="button"
-                                    class="btn bg-olive text-white w-100 text-nowrap">{{ __('back') }}</button>
-                            </div>
-                        </div>
                     </div>
                     <!-- /.card-body -->
+                    <div class="card-footer d-flex justify-content-center">
+                        <a class="btn btn-warning w-100 text-nowrap m-1" href="{{ route('user.edit', $user->userId) }}">{{ __('edit') }}</a>
+                        <a class="btn bg-olive text-white w-100 text-nowrap m-1" href="{{ route('user') }}">{{ __('back') }}</a>
+                    </div>
                 </div>
                 <!-- /.card -->
             </div>

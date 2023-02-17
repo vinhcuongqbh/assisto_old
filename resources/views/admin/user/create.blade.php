@@ -9,7 +9,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xl-6">
+            <div class="col-xl-8">
                 <div class="card card-default">
                     <div class="card-header">
                         <h3 class="card-title text-bold">{{ __('newUser') }}</h3>

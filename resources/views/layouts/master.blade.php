@@ -39,50 +39,40 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false" class="nav-link dropdown-toggle">{{ __('language') }}</a>
+                        aria-expanded="false" class="dropdown-toggle btn btn-sm mr-1">{{ __('language') }}</a>
                     <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
                         <li><a href="/language/en" class="dropdown-item">{{ __('english') }}</a></li>
                         <li><a href="/language/jp" class="dropdown-item">{{ __('japanese') }}</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
-                    <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false" class="nav-link dropdown-toggle">{{ Auth::user()->name }}</a>
-                    <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                        <li><a href="{{ route('user.show', Auth::user()->userId) }}"
-                            class="dropdown-item">{{ __('profile') }} </a>
-                        </li>                        
-                        <li>
-                            <form action="{{ route('logout') }}" class="dropdown-item" method="post">
-                                {{ csrf_field() }}
-                                <input type="submit" value="{{ __('logout') }}"
-                                    style="border: 0px; padding: 0px; background-color:white; width:100%; text-align:left">
-                            </form>
-                        </li>
-                    </ul>
+                <li class="nav-item">
+                    <form action="{{ route('logout') }}" method="post">
+                        {{ csrf_field() }}
+                        <input class="btn btn-danger btn-sm" type="submit" value="{{ __('logout') }}">
+                    </form>
                 </li>
             </ul>
         </nav>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-light-primary elevation-4">
+        <aside class="main-sidebar elevation-4 sidebar-light-teal">
             <!-- Brand Logo -->
-            <a href="/admin" class="brand-link">
+            <div class="brand-link">
                 <img src="/img/logo.svg" alt="アシストロボ Logo" class="brand-image img-size-64">
-                <span class="brand-text font-weight-light">アシストロボ</span>
-            </a>
+                <a class="brand-text font-weight-light" href="{{ route('user.show', Auth::user()->userId) }}">{{ Auth::user()->name }}</a>
+            </div>
 
             <!-- Sidebar -->
-            <div class="sidebar">
+            <div class="sidebar os-theme-light">
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
-                            <a href="/admin/user" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>{{ __('userManagement') }}</p>
+                            <a href="/admin" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>{{ __('dashboard') }}</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -91,6 +81,13 @@
                                 <p>{{ __('centerManagement') }}</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/admin/user" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>{{ __('userManagement') }}</p>
+                            </a>
+                        </li>
+                        
                         <li class="nav-item">
                             <a href="/admin/store" class="nav-link">
                                 <i class="nav-icon fas fa-store"></i>
@@ -105,38 +102,27 @@
                         </li> --}}
                         <li class="nav-item">
                             <a href="/admin/accident" class="nav-link">
-                                <i class="nav-icon fas fa-file"></i>
+                                <i class="nav-icon fa fa-exclamation-triangle"></i>
                                 <p>{{ __('accidentReports') }}</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/admin/track" class="nav-link">
-                                <i class="nav-icon fas fa-file"></i>
+                                <i class="nav-icon fas fa-truck-loading"></i>
                                 <p>{{ __('trackReports') }}</p>
                             </a>
                         </li>                        
                         <li class="nav-item">
-                            <a href="/admin/setting" class="nav-link">
-                                <i class="nav-icon fas fa-cog"></i>
-                                <p>
-                                    {{ __('setting') }}
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
+                            <a href="/admin/setting/slogan" class="nav-link">
+                                <i class="fa fa-bookmark nav-icon"></i>
+                                <p>{{ __('slogan') }}</p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                  <a href="/admin/setting/slogan" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>{{ __('slogan') }}</p>
-                                  </a>
-                                </li>
-                                <li class="nav-item">
-                                  <a href="/admin/setting/guide" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>{{ __('guideManagement') }}</p>
-                                  </a>
-                                </li>
-                              </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/setting/guide" class="nav-link">
+                                <i class="far fa-file nav-icon"></i>
+                                <p>{{ __('guideManagement') }}</p>
+                            </a>
                         </li>
                     </ul>
                 </nav>

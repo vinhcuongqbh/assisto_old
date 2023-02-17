@@ -9,7 +9,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xl-6">
+            <div class="col-xl-8">
                 <div class="card card-default">
                     <div class="card-header">
                         <h3 class="card-title text-bold">{{ __('userInformation') }}</h3>
@@ -72,25 +72,13 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group row justify-content-end">
-                                @if ((Auth::user()->roleId < $user->roleId) || (Auth::user()->userId == $user->userId))
-                                    <div class="col-4 col-md-3">
-                                        <button type="button" class="btn btn-block btn-outline-success"
-                                            style="padding-left:0px; padding-right:0px" data-toggle="modal"
-                                            data-target="#reset-pass">{{ __('newPassword') }}</button>
-                                    </div>
-                                @endif
-                                <div class="col-4 col-md-3">
-                                    <button type="submit"
-                                        class="btn bg-olive text-white w-100 text-nowrap">{{ __('update') }}</button>
-                                </div>
-                                <div class="col-4 col-md-3">
-                                    <a href="{{ route('user.show', $user->userId) }}"><button type="button"
-                                            class="btn bg-olive text-white w-100 text-nowrap">{{ __('back') }}</button></a>
-                                </div>
-                            </div>
                         </div>
                         <!-- /.card-body -->
+                        <div class="card-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-danger text-white w-100 text-nowrap m-1" data-toggle="modal" data-target="#reset-pass">{{ __('changePassword') }}</button>
+                            <button type="submit" class="btn btn-warning w-100 text-nowrap m-1">{{ __('update') }}</button>
+                            <button onclick="javascript:history.back()" class="btn bg-olive text-white w-100 text-nowrap m-1">{{ __('back') }}</button>
+                        </div>
                     </form>
                 </div>
                 <!-- /.card -->
@@ -183,33 +171,6 @@
                 errorPlacement: function(error, element) {
                     error.addClass('invalid-feedback');
                     element.closest('.col-sm-9').append(error);
-
-                },
-                highlight: function(element, errorClass, validClass) {
-                    $(element).addClass('is-invalid');
-                },
-                unhighlight: function(element, errorClass, validClass) {
-                    $(element).removeClass('is-invalid');
-                }
-            });
-        });
-    </script>
-    <script>
-        //Kiểm tra dữ liệu đầu vào
-        $(function() {
-            $('#form-resetpass').validate({
-                rules: {
-                    confirmPassword: {
-                        equalTo: "#password"
-                    }
-                },
-                messages: {
-                    confirmPassword: "{{ __('samePassword') }}",
-                },
-                errorElement: 'span',
-                errorPlacement: function(error, element) {
-                    error.addClass('invalid-feedback');
-                    element.closest('div').append(error);
 
                 },
                 highlight: function(element, errorClass, validClass) {

@@ -16,7 +16,7 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-auto">
-                                    <a class="btn btn-danger text-white w-100" href="{{ route('staff.store.create') }}"><i class="fa fa-plus"></i> {{ __('newStore') }}</a>
+                                    <a class="btn bg-olive text-white w-100" href="{{ route('staff.store.create') }}"><i class="fa fa-plus"></i> {{ __('newStore') }}</a>
                                 </div>
                             </div>
                         </div>
