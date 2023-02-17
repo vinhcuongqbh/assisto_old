@@ -20,10 +20,8 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <!-- form start -->
                         {{-- <form class="form-horizontal" action="{{ route('track.search') }}" method="post" id="track-search">
-                        @csrf
-                        <div class="card-body">
+                            @csrf
                             <div class="form-group row">
                                 <label for="date" class="col-2 col-md-1 col-form-label">{{ __('date') }}</label>
                                 <div class="col-7 col-md-3">
@@ -35,8 +33,8 @@
                                         class="btn bg-olive text-white w-100">{{ __('search') }}</button>
                                 </div>
                             </div>
-                    </form><!-- /.form -->
-                    <hr> --}}
+                        </form>
+                        <hr> --}}
 
                         <table id="search-table" class="table table-bordered table-striped">
                             <thead>
@@ -53,7 +51,8 @@
                                 @foreach ($tracks as $track)
                                     <tr>
                                         <td style="text-align: center">
-                                            <a href="{{ route('track.show', $track->track_id) }}">{{ $track->track_id }}</a>
+                                            <a
+                                                href="{{ route('track.show', $track->track_id) }}">{{ $track->track_id }}</a>
                                         </td>
                                         <td>{{ $track->track_date }}</td>
                                         <td>{{ $track->track_time }}</td>

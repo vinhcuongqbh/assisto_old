@@ -78,7 +78,7 @@
                                                 <a href="{{ route('user.delete', $user->userId) }}"
                                                     onclick="return confirm('{{ __('deleteUser') }}')">
                                                     <button type="button"
-                                                        class="btn btn-danger text-white w-100 text-nowrap">{{ __('disenable') }}</button>
+                                                        class="btn btn-danger text-white w-100 text-nowrap">{{ __('disable') }}</button>
                                                 </a>
                                             @else
                                                 <a href="{{ route('user.restore', $user->userId) }}"

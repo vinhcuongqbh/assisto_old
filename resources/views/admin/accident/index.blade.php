@@ -20,9 +20,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <!-- form start -->
-                        {{-- <form action="{{ route('accident.search') }}" method="post"
-                            id="accident-search">
+                        {{-- <form action="{{ route('accident.search') }}" method="post" id="accident-search">
                             @csrf
                             <div class="form-group row">
                                 <label for="date" class="col-2 col-md-1 col-form-label">{{ __('date') }}</label>
@@ -34,7 +32,7 @@
                                         class="btn bg-olive text-white w-100 text-nowrap">{{ __('search') }}</button>
                                 </div>
                             </div>
-                        </form><!-- /.form -->
+                        </form>
                         <hr> --}}
 
                         <table id="search-table" class="table table-bordered table-striped">

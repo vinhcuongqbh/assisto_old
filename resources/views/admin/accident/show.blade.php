@@ -54,42 +54,42 @@
                             <table class="table table-striped projects p-0 m-0">
                                 <tbody>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('name') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accidentPeople->acc_involved_people_name }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('address') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accidentPeople->acc_involved_people_addr }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('contact') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accidentPeople->acc_involved_people_contact }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('telephone') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accidentPeople->acc_involved_people_tel }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('company') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accidentPeople->acc_involved_people_company }}
                                         </td>
                                     </tr>
@@ -100,18 +100,18 @@
                             <table class="table table-striped projects p-0 m-0">
                                 <tbody>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('name') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accidentPeople->acc_involved_people_other }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('contact') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accidentPeople->acc_involved_people_other_contact }}
                                         </td>
                                     </tr>
@@ -125,67 +125,101 @@
                             <table class="table table-striped projects p-0 m-0">
                                 <tbody>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('carNumberPalette') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accidentCar->car_number_palette }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('carType') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accidentCar->car_type }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('carColor') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accidentCar->car_color }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('carImage') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             @if (isset($accidentCarMedias))
-                                                <?php $i = 1; ?>
-                                                @foreach ($accidentCarMedias as $accidentCarMedia)
-                                                    <a href="/storage/{{ $accidentCarMedia->car_media_url }}"
-                                                        target="_blank"><img src="/img/file.png"
-                                                            style="width:30px; height:30x">File Attachment
-                                                        {{ $i++ }}&nbsp&nbsp&nbsp</a>
-                                                    <br>
-                                                @endforeach
+                                                <?php
+                                                $i = 1;
+                                                $img = ['jpg', 'jpeg', 'png', 'bmp'];
+                                                ?>
+                                                <div
+                                                    style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                                                    @foreach ($accidentCarMedias as $accidentCarMedia)
+                                                        @if (in_array(substr($accidentCarMedia->car_media_url, -3), $img))
+                                                            <div>
+                                                                <img style="width:
+                                                                100%"
+                                                                    src="/storage/{{ $accidentCarMedia->car_media_url }}">
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
                                             @endif
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
+                                        </td>
+                                        <td style="width: 80%">
+                                            @if (isset($accidentCarMedias))
+                                                <?php
+                                                $i = 1;
+                                                $img = ['jpg', 'jpeg', 'png', 'bmp'];
+                                                ?>
+                                                <div>
+                                                    @foreach ($accidentCarMedias as $accidentCarMedia)
+                                                        @if (!in_array(substr($accidentCarMedia->car_media_url, -3), $img))
+                                                            <div>
+                                                                <a href="/storage/{{ $accidentCarMedia->car_media_url }}"
+                                                                    target="_blank"><img src="/img/file.png"
+                                                                        style="width:30px; height:30x">File
+                                                                    Attachment
+                                                                    {{ $i++ }}&nbsp&nbsp&nbsp</a>
+                                                                <br>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('carSpeed') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accidentCar->car_speed }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('carRepairGarageAddress') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accidentCar->car_repair_garage }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('carRepairGarageTel') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accidentCar->car_repair_garage_tel }}
                                         </td>
                                     </tr>
@@ -197,26 +231,26 @@
                             <table class="table table-striped projects p-0 m-0">
                                 <tbody>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('carSpeed') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accident->our_truck_speed }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('carRepairGarageAddress') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accident->our_truck_repair_garage_addr }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('carRepairGarageTel') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accident->our_truck_repair_garage_tel }}
                                         </td>
                                     </tr>
@@ -231,35 +265,69 @@
                             <table class="table table-striped projects p-0 m-0">
                                 <tbody>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('insuranceCompanyName') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accidentPeople->acc_involved_people_insurance_company }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('insuranceNumber') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accidentPeople->acc_involved_people_insurance_number }}
+                                        </td>
+                                    </tr>                                    
+                                    <tr>
+                                        <td class="text-bold" style="width: 20%">
+                                            {{ __('insuranceImage') }}
+                                        </td>
+                                        <td style="width: 80%">
+                                            @if (isset($accidentPeopleMedias))
+                                                <?php
+                                                $i = 1;
+                                                $img = ['jpg', 'jpeg', 'png', 'bmp'];
+                                                ?>
+                                                <div
+                                                    style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                                                    @foreach ($accidentPeopleMedias as $accidentPeopleMedia)
+                                                        @if (in_array(substr($accidentPeopleMedia->insurance_media_url, -3), $img))
+                                                            <div>
+                                                                <img style="width:
+                                                                100%"
+                                                                    src="/storage/{{ $accidentPeopleMedia->insurance_media_url }}">
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            @endif
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
-                                            {{ __('insuranceImage') }}
+                                        <td class="text-bold" style="width: 20%">
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             @if (isset($accidentPeopleMedias))
-                                                <?php $i = 1; ?>
-                                                @foreach ($accidentPeopleMedias as $accidentPeopleMedia)
-                                                    <a href="/storage/{{ $accidentPeopleMedia->insurance_media_url }}"
-                                                        target="_blank"><img src="/img/file.png"
-                                                            style="width:30px; height:30x">File Attachment
-                                                        {{ $i++ }}&nbsp&nbsp&nbsp</a>
-                                                    <br>
-                                                @endforeach
+                                                <?php
+                                                $i = 1;
+                                                $img = ['jpg', 'jpeg', 'png', 'bmp'];
+                                                ?>
+                                                <div>
+                                                    @foreach ($accidentPeopleMedias as $accidentPeopleMedia)
+                                                        @if (!in_array(substr($accidentPeopleMedia->insurance_media_url, -3), $img))
+                                                            <div>
+                                                                <a href="/storage/{{ $accidentPeopleMedia->insurance_media_url }}"
+                                                                    target="_blank"><img src="/img/file.png"
+                                                                        style="width:30px; height:30x">File
+                                                                    Attachment
+                                                                    {{ $i++ }}&nbsp&nbsp&nbsp</a>
+                                                                <br>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
                                             @endif
                                         </td>
                                     </tr>
@@ -276,115 +344,149 @@
                             <table class="table table-striped projects p-0 m-0">
                                 <tbody>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('roadType') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accident->road_type_name }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('roadWidth') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accident->onsite_road_width }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('outlook') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accident->onsite_outlook }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('trafficSign') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accident->onsite_traffic_signs }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('date') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accident->acc_date }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('time') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accident->acc_time }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('collisionPoint') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accident->onsite_collision_point }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('parkPosition') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accident->onsite_park_position }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('victim') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accident->onsite_victim }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('witness') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accident->onsite_witness }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('content') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accident->acc_content }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('status') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             {{ $accident->track_status_name }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 20%">
                                             {{ __('accidentImage') }}
                                         </td>
-                                        <td style="width: 70%">
+                                        <td style="width: 80%">
                                             @if (isset($accidentMedias))
-                                                <?php $i = 1; ?>
-                                                @foreach ($accidentMedias as $accidentMedia)
-                                                    <a href="/storage/{{ $accidentMedia->acc_media_url }}"
-                                                        target="_blank"><img src="/img/file.png"
-                                                            style="width:30px; height:30x">File Attachment
-                                                        {{ $i++ }}&nbsp&nbsp&nbsp</a>
-                                                    <br>
-                                                @endforeach
+                                                <?php
+                                                $i = 1;
+                                                $img = ['jpg', 'jpeg', 'png', 'bmp'];
+                                                ?>
+                                                <div
+                                                    style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                                                    @foreach ($accidentMedias as $accidentMedia)
+                                                        @if (in_array(substr($accidentMedia->acc_media_url, -3), $img))
+                                                            <div>
+                                                                <img style="width:
+                                                                100%"
+                                                                    src="/storage/{{ $accidentMedia->acc_media_url }}">
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-bold" style="width: 20%">
+                                        </td>
+                                        <td style="width: 80%">
+                                            @if (isset($accidentMedias))
+                                                <?php
+                                                $i = 1;
+                                                $img = ['jpg', 'jpeg', 'png', 'bmp'];
+                                                ?>
+                                                <div>
+                                                    @foreach ($accidentMedias as $accidentMedia)
+                                                        @if (!in_array(substr($accidentMedia->acc_media_url, -3), $img))
+                                                            <div>
+                                                                <a href="/storage/{{ $accidentMedia->acc_media_url }}"
+                                                                    target="_blank"><img src="/img/file.png"
+                                                                        style="width:30px; height:30x">File
+                                                                    Attachment
+                                                                    {{ $i++ }}&nbsp&nbsp&nbsp</a>
+                                                                <br>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
                                             @endif
                                         </td>
                                     </tr>

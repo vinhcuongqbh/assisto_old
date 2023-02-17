@@ -35,7 +35,7 @@
                                 <div class="col-sm-2">
                                     <label for="guideFile">{{ __('guideFile') }}</label>
                                 </div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-7">
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="guideFile" name="guideFile"
@@ -44,7 +44,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-3">
                                     <button type="submit"
                                         class="btn bg-olive text-white w-100">{{ __('update') }}</button>
                                 </div>
@@ -108,7 +108,7 @@
                 errorElement: 'span',
                 errorPlacement: function(error, element) {
                     error.addClass('invalid-feedback');
-                    element.closest('.col-sm-8').append(error);
+                    element.closest('.col-sm-7').append(error);
 
                 },
                 highlight: function(element, errorClass, validClass) {

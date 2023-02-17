@@ -19,11 +19,10 @@
                             </div>
                         </div>
                     </div>
-                    <!-- form start -->
-                    {{-- <form class="form-horizontal" action="{{ route('staff.accident.search') }}" method="post"
-                        id="accident-search">
-                        @csrf
-                        <div class="card-body">
+                    <div class="card-body">
+                        {{-- <form class="form-horizontal" action="{{ route('staff.accident.search') }}" method="post"
+                            id="accident-search">
+                            @csrf
                             <div class="form-group row">
                                 <label for="date" class="col-2 col-md-1 col-form-label">{{ __('date') }}</label>
                                 <div class="col-7 col-md-3">
@@ -35,41 +34,41 @@
                                         class="btn bg-olive text-white w-100 text-nowrap">{{ __('search') }}</button>
                                 </div>
                             </div>
-                    </form><!-- /.form -->
-                    <hr> --}}
+                        </form>
+                        <hr> --}}
 
-                    <table id="search-table" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th style="text-align: center">No</th>
-                                <th style="text-align: center">{{ __('date') }}</th>
-                                <th style="text-align: center">{{ __('time') }}</th>
-                                <th style="text-align: center">{{ __('place') }}</th>
-                                <th style="text-align: center">{{ __('summary') }}</th>
-                                <th style="text-align: center">{{ __('status') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($accidents as $accident)
+                        <table id="search-table" class="table table-bordered table-striped">
+                            <thead>
                                 <tr>
-                                    <td style="text-align: center">
-                                        <a
-                                            href="{{ route('staff.accident.show', $accident->acc_id) }}">{{ $accident->acc_id }}</a>
-                                    </td>
-                                    <td>{{ $accident->acc_date }}</td>
-                                    <td>{{ $accident->acc_time }}</td>
-                                    <td>{{ $accident->onsite_collision_point }}</td>
-                                    <td>{{ $accident->acc_content }}</td>
-                                    <td>{{ $accident->track_status_name }}</td>
+                                    <th style="text-align: center">No</th>
+                                    <th style="text-align: center">{{ __('date') }}</th>
+                                    <th style="text-align: center">{{ __('time') }}</th>
+                                    <th style="text-align: center">{{ __('place') }}</th>
+                                    <th style="text-align: center">{{ __('summary') }}</th>
+                                    <th style="text-align: center">{{ __('status') }}</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div><!-- /.card-body -->
+                            </thead>
+                            <tbody>
+                                @foreach ($accidents as $accident)
+                                    <tr>
+                                        <td style="text-align: center">
+                                            <a
+                                                href="{{ route('staff.accident.show', $accident->acc_id) }}">{{ $accident->acc_id }}</a>
+                                        </td>
+                                        <td>{{ $accident->acc_date }}</td>
+                                        <td>{{ $accident->acc_time }}</td>
+                                        <td>{{ $accident->onsite_collision_point }}</td>
+                                        <td>{{ $accident->acc_content }}</td>
+                                        <td>{{ $accident->track_status_name }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div><!-- /.card-body -->
 
-            </div><!-- /.card card-primary -->
-        </div><!-- /.col-lg-6 -->
-    </div><!-- /.row -->
+                </div><!-- /.card card-primary -->
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 @stop
 

@@ -145,7 +145,7 @@
                                             </div>
                                         </div>
                                         <br>
-                                        @if (isset($accidentCarMedias))
+                                        {{-- @if (isset($accidentCarMedias))
                                             <?php $i = 1; ?>
                                             @foreach ($accidentCarMedias as $accidentCarMedia)
                                                 <a href="/storage/{{ $accidentCarMedia->car_media_url }}"
@@ -157,6 +157,28 @@
                                                         src="/img/delete.png" style="width: 15px; height:15x"></a>
                                                 <br>
                                             @endforeach
+                                        @endif --}}
+                                        @if (isset($accidentCarMedias))
+                                            <?php
+                                            $i = 1;
+                                            $img = ['jpg', 'jpeg', 'png', 'bmp'];
+                                            ?>
+                                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                                                @foreach ($accidentCarMedias as $accidentCarMedia)
+                                                    @if (in_array(substr($accidentCarMedia->car_media_url, -3), $img))
+                                                        <div>
+                                                            <img style="width:
+                                                                100%"
+                                                                src="/storage/{{ $accidentCarMedia->car_media_url }}">
+                                                            <a
+                                                                href="{{ route('staff.accident.deleteCarImage', $accidentCarMedia->car_media_id) }}"><button
+                                                                    type="button" class="btn btn-sm bg-danger"
+                                                                    style="float: right; margin-top: 5px">{{ __('delete') }}</button></a>
+                                                            <br>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
                                         @endif
                                     </div>
                                 </div>

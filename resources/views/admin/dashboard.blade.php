@@ -43,7 +43,7 @@
                             <a class="btn bg-olive text-white w-100 btn-lg" href="/admin/setting/slogan">{{ __('slogan') }}</a>
                         </div>
                         <div class="form-group">
-                            <a class="btn bg-olive text-white w-100 btn-lg" href="/admin/guide">{{ __('guideManagement') }}</a>
+                            <a class="btn bg-olive text-white w-100 btn-lg" href="/admin/setting/guide">{{ __('guideManagement') }}</a>
                         </div>
                     </div>
                     <!-- /.card-body -->

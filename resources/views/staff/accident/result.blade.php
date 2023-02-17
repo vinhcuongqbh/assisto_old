@@ -19,8 +19,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-body p-0 m-0">
-                        <!-- form start -->
+                    <div class="card-body p-0 m-0">                        
                         {{-- <form class="form-horizontal" action="{{ route('staff.accident.search') }}" method="post"
                             id="accident-search">
                             @csrf
@@ -35,7 +34,7 @@
                                         class="btn bg-olive text-white w-100">{{ __('search') }}</button>
                                 </div>
                             </div>
-                        </form><!-- /.form -->
+                        </form>
                         <hr> --}}
 
                         <table id="search-table" class="table table-bordered table-striped">
