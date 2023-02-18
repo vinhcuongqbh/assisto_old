@@ -139,7 +139,7 @@
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" name="carImage[]"
-                                                    multiple />
+                                                    accept="image/*" multiple />
                                                 <label class="custom-file-label"
                                                     for="inputFile">{{ __('ChooseFile') }}</label>
                                             </div>
@@ -245,12 +245,12 @@
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" name="insuranceImage[]"
-                                                    multiple />
+                                                    accept="image/*" multiple />
                                                 <label class="custom-file-label"
                                                     for="inputFile">{{ __('ChooseFile') }}</label>
                                             </div>
                                         </div>
-                                        <br>                                        
+                                        <br>
                                         @if (isset($accidentPeopleMedias))
                                             <?php
                                             $i = 1;
@@ -373,12 +373,12 @@
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" name="accidentImage[]"
-                                                    multiple />
+                                                    accept="image/*" multiple />
                                                 <label class="custom-file-label"
                                                     for="inputFile">{{ __('ChooseFile') }}</label>
                                             </div>
                                         </div>
-                                        <br>                                        
+                                        <br>
                                         @if (isset($accidentMedias))
                                             <?php
                                             $i = 1;
@@ -394,7 +394,7 @@
                                                             <a
                                                                 href="{{ route('staff.accident.deleteAccidentImage', $accidentMedia->acc_media_id) }}"><button
                                                                     type="button" class="btn btn-sm bg-danger"
-                                                                    style="float: right; margin-top: 5px">{{ __('delete') }}</button></a>                                                            
+                                                                    style="float: right; margin-top: 5px">{{ __('delete') }}</button></a>
                                                         </div>
                                                     @endif
                                                 @endforeach
