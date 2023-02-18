@@ -12,6 +12,8 @@ use App\Models\AccidentPeople;
 use App\Models\AccidentPeopleMedia;
 use App\Models\RoadType;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+
 
 class AccidentController extends Controller
 {
@@ -25,14 +27,14 @@ class AccidentController extends Controller
         if (Auth::user()->roleId != 3) {
             $accident = Accident::join('asahi_track_report_status', 'asahi_track_report_status.track_status_id', 'asahi_accident_report.acc_status')
                 ->select('asahi_accident_report.*', 'asahi_track_report_status.track_status_name')
-                ->orderBy('asahi_accident_report.acc_date', 'desc')                
+                ->orderBy('asahi_accident_report.acc_date', 'desc')
                 ->get();
             return view('admin.accident.index', ['accidents' => $accident]);
         } else {
             $accident = Accident::where('staff_id', Auth::id())
                 ->join('asahi_track_report_status', 'asahi_track_report_status.track_status_id', 'asahi_accident_report.acc_status')
                 ->select('asahi_accident_report.*', 'asahi_track_report_status.track_status_name')
-                ->orderBy('asahi_accident_report.acc_date', 'desc')  
+                ->orderBy('asahi_accident_report.acc_date', 'desc')
                 ->get();
             return view('staff.accident.index', ['accidents' => $accident]);
         }
@@ -68,7 +70,7 @@ class AccidentController extends Controller
     {
         //Kiểm tra thông tin đầu vào
         $validated = $request->validate([
-            'date' => 'required',
+            'date' => 'required'
         ]);
 
         $accident = new Accident;
@@ -274,10 +276,10 @@ class AccidentController extends Controller
     {
         //Kiểm tra thông tin đầu vào
         $validated = $request->validate([
-            'date' => 'required',
+            'date' => 'required'
         ]);
 
-        
+
         $accident = Accident::where('acc_id', $id)->first();
         //$accident->staff_id = Auth::id();
         $accident->our_truck_speed = $request->ourTruckSpeed;
@@ -389,7 +391,7 @@ class AccidentController extends Controller
         else return redirect()->route('staff.accident.show', ['id' => $accident->acc_id]);
     }
 
-   
+
     public function destroy($id)
     {
         //
@@ -399,6 +401,9 @@ class AccidentController extends Controller
     public function deleteCarImage($id)
     {
         $accidentCarMedia = AccidentCarMedia::where('car_media_id', $id)->first();
+        if (Storage::exists('public/' . $accidentCarMedia->car_media_url)) {
+            Storage::delete('public/' . $accidentCarMedia->car_media_url);
+        }
         $accidentCarMedia->delete();
         return back();
     }
@@ -407,6 +412,9 @@ class AccidentController extends Controller
     public function deleteInsuranceImage($id)
     {
         $accidentPeopleMedia = AccidentPeopleMedia::where('insurance_media_id', $id)->first();
+        if (Storage::exists('public/' . $accidentPeopleMedia->insurance_media_url)) {
+            Storage::delete('public/' . $accidentPeopleMedia->insurance_media_url);
+        }
         $accidentPeopleMedia->delete();
         return back();
     }
@@ -415,6 +423,9 @@ class AccidentController extends Controller
     public function deleteAccidentImage($id)
     {
         $accidentMedia = AccidentMedia::where('acc_media_id', $id)->first();
+        if (Storage::exists('public/' . $accidentMedia->acc_media_url)) {
+            Storage::delete('public/' . $accidentMedia->acc_media_url);
+        }
         $accidentMedia->delete();
         return back();
     }
@@ -426,7 +437,7 @@ class AccidentController extends Controller
             $accident = Accident::where('acc_date', $request->date)
                 ->join('asahi_track_report_status', 'asahi_track_report_status.track_status_id', 'asahi_accident_report.acc_status')
                 ->select('asahi_accident_report.*', 'asahi_track_report_status.track_status_name')
-                ->orderBy('asahi_accident_report.acc_date', 'desc') 
+                ->orderBy('asahi_accident_report.acc_date', 'desc')
                 ->get();
             return view('admin.accident.result', ['accidents' => $accident, 'date' => $request->date]);
         } else {
@@ -434,7 +445,7 @@ class AccidentController extends Controller
                 ->where('staff_id', Auth::id())
                 ->join('asahi_track_report_status', 'asahi_track_report_status.track_status_id', 'asahi_accident_report.acc_status')
                 ->select('asahi_accident_report.*', 'asahi_track_report_status.track_status_name')
-                ->orderBy('asahi_accident_report.acc_date', 'desc') 
+                ->orderBy('asahi_accident_report.acc_date', 'desc')
                 ->get();
             return view('staff.accident.result', ['accidents' => $accident, 'date' => $request->date]);
         }

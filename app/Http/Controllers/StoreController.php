@@ -10,6 +10,8 @@ use App\Models\Store;
 use App\Models\Center;
 use App\Models\User;
 use App\Models\StoreMedia;
+use Illuminate\Support\Facades\DB;
+
 
 
 
@@ -18,7 +20,10 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $store = Store::all();
+        $store = Store::join('asahi_center', 'asahi_center.centerId', 'asahi_store.centerId')
+            ->select('asahi_store.*', 'asahi_center.centerName')
+            ->get();
+
         return view('admin.store.index', ['stores' => $store]);
     }
 
@@ -94,7 +99,7 @@ class StoreController extends Controller
             ->leftjoin('asahi_center', 'asahi_center.centerId', 'asahi_store.centerId')
             ->select('asahi_store.*', 'asahi_center.centerName')
             ->first();
-        
+
         $storeMedia = StoreMedia::where('storeId', $id)->get();
 
         if (Auth::user()->roleId != 3) return view('admin.store.show', ['store' => $store, 'storeMedias' => $storeMedia]);
@@ -169,16 +174,18 @@ class StoreController extends Controller
 
     public function search(Request $request)
     {
-        $store = Store::query();
+        $store = Store::join('asahi_center', 'asahi_center.centerId', 'asahi_store.centerId')
+            ->select('asahi_store.*', 'asahi_center.centerName');
 
         if (isset($request->storeID)) $store->where('storeId', $request->storeID);
-        if (isset($request->storeName)) $store->where('storeName', 'LIKE', '%'.$request->storeName.'%');
-        if (isset($request->address)) $store->where('storeAddr', 'LIKE', '%'.$request->address.'%');
-        if (isset($request->telephone)) $store->where('storeTel', $request->telephone);        
-        if (isset($request->centerID)) $store->where('centerId', $request->centerID);
-        
-        $store = $store->get(); 
-        
+        if (isset($request->storeName)) $store->where('storeName', 'LIKE', '%' . $request->storeName . '%');
+        if (isset($request->address)) $store->where('storeAddr', 'LIKE', '%' . $request->address . '%');
+        if (isset($request->telephone)) $store->where('storeTel', $request->telephone);
+        if (isset($request->centerID)) $store->where('asahi_center.centerId', $request->centerID);
+        if (isset($request->centerName)) $store->where('centerName', 'LIKE', '%' . $request->centerName . '%');
+
+        $store = $store->get();
+
         if (Auth::user()->roleId != 3) return view('admin.store.result', ['stores' => $store]);
         else return view('staff.store.result', ['stores' => $store]);
     }

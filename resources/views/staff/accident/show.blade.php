@@ -149,19 +149,25 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 100%" colspan="2">
                                             {{ __('carImage') }}
-                                        </td>
-                                        <td style="width: 70%">
                                             @if (isset($accidentCarMedias))
-                                                <?php $i = 1; ?>
-                                                @foreach ($accidentCarMedias as $accidentCarMedia)
-                                                    <a href="/storage/{{ $accidentCarMedia->car_media_url }}"
-                                                        target="_blank"><img src="/img/file.png"
-                                                            style="width:30px; height:30x">File Attachment
-                                                        {{ $i++ }}&nbsp&nbsp&nbsp</a>
-                                                    <br>
-                                                @endforeach
+                                                <?php
+                                                $i = 1;
+                                                $img = ['jpg', 'jpeg', 'png', 'bmp'];
+                                                ?>
+                                                <div
+                                                    style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 10px;">
+                                                    @foreach ($accidentCarMedias as $accidentCarMedia)
+                                                        @if (in_array(substr($accidentCarMedia->car_media_url, -3), $img))
+                                                            <div>
+                                                                <img style="width:
+                                                                100%"
+                                                                    src="/storage/{{ $accidentCarMedia->car_media_url }}">
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
                                             @endif
                                         </td>
                                     </tr>
@@ -247,19 +253,25 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 30%" colspan="2">
                                             {{ __('insuranceImage') }}
-                                        </td>
-                                        <td style="width: 70%">
                                             @if (isset($accidentPeopleMedias))
-                                                <?php $i = 1; ?>
-                                                @foreach ($accidentPeopleMedias as $accidentPeopleMedia)
-                                                    <a href="/storage/{{ $accidentPeopleMedia->insurance_media_url }}"
-                                                        target="_blank"><img src="/img/file.png"
-                                                            style="width:30px; height:30x">File Attachment
-                                                        {{ $i++ }}&nbsp&nbsp&nbsp</a>
-                                                    <br>
-                                                @endforeach
+                                                <?php
+                                                $i = 1;
+                                                $img = ['jpg', 'jpeg', 'png', 'bmp'];
+                                                ?>
+                                                <div
+                                                    style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 10px;">
+                                                    @foreach ($accidentPeopleMedias as $accidentPeopleMedia)
+                                                        @if (in_array(substr($accidentPeopleMedia->insurance_media_url, -3), $img))
+                                                            <div>
+                                                                <img style="width:
+                                                                100%"
+                                                                    src="/storage/{{ $accidentPeopleMedia->insurance_media_url }}">
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
                                             @endif
                                         </td>
                                     </tr>
@@ -372,19 +384,25 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 30%">
+                                        <td class="text-bold" style="width: 30%" colspan="2">
                                             {{ __('accidentImage') }}
-                                        </td>
-                                        <td style="width: 70%">
                                             @if (isset($accidentMedias))
-                                                <?php $i = 1; ?>
-                                                @foreach ($accidentMedias as $accidentMedia)
-                                                    <a href="/storage/{{ $accidentMedia->acc_media_url }}"
-                                                        target="_blank"><img src="/img/file.png"
-                                                            style="width:30px; height:30x">File Attachment
-                                                        {{ $i++ }}&nbsp&nbsp&nbsp</a>
-                                                    <br>
-                                                @endforeach
+                                                <?php
+                                                $i = 1;
+                                                $img = ['jpg', 'jpeg', 'png', 'bmp'];
+                                                ?>
+                                                <div
+                                                    style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 10px;">
+                                                    @foreach ($accidentMedias as $accidentMedia)
+                                                        @if (in_array(substr($accidentMedia->acc_media_url, -3), $img))
+                                                            <div>
+                                                                <img style="width:
+                                                                100%"
+                                                                    src="/storage/{{ $accidentMedia->acc_media_url }}">
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
                                             @endif
                                         </td>
                                     </tr>

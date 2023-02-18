@@ -177,6 +177,8 @@ class UserController extends Controller
 
         if (isset($request->userID)) $user->where('userId', $request->userID);
         if (isset($request->userName)) $user->where('name', 'LIKE', '%' . $request->userName . '%');
+        if (isset($request->centerID)) $user->where('asahi_center.centerId', $request->centerID);
+        if (isset($request->centerName)) $user->where('centerName', 'LIKE', '%' . $request->centerName . '%');
 
         $user = $user->get();
 

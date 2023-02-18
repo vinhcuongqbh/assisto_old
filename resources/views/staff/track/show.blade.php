@@ -91,19 +91,45 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="text-bold">
+                                    <td class="text-bold" colspan="2">
                                         {{ __('attachment') }}
-                                    </td>
-                                    <td>
+                                    
                                         @if (isset($trackReportMedias))
-                                            <?php $i = 1; ?>
-                                            @foreach ($trackReportMedias as $trackReportMedia)
-                                                <a href="/storage/{{ $trackReportMedia->track_report_media_url }}"
-                                                    target="_blank"><img src="/img/file.png"
-                                                        style="width:30px; height:30x">File Attachment
-                                                    {{ $i++ }}&nbsp&nbsp&nbsp</a>
-                                                <br>
-                                            @endforeach
+                                            <?php
+                                            $img = ['jpg', 'jpeg', 'png', 'bmp'];
+                                            ?>
+                                            <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 10px;">
+                                                @foreach ($trackReportMedias as $trackReportMedia)
+                                                    @if (in_array(substr($trackReportMedia->track_report_media_url, -3), $img))
+                                                        <div>
+                                                            <img style="width:
+                                                                100%"
+                                                                src="/storage/{{ $trackReportMedia->track_report_media_url }}">
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-bold" colspan="2">                                    
+                                        @if (isset($trackReportMedias))
+                                            <?php
+                                            $img = ['jpg', 'jpeg', 'png', 'bmp'];
+                                            ?>
+                                            <div>
+                                                @foreach ($trackReportMedias as $trackReportMedia)
+                                                    @if (!in_array(substr($trackReportMedia->track_report_media_url, -3), $img))
+                                                        <div>
+                                                            <a href="/storage/{{ $trackReportMedia->track_report_media_url }}"
+                                                                target="_blank"><img src="/img/file.png"
+                                                                    style="width:30px; height:30x">{{ substr($trackReportMedia->track_report_media_url, strlen('File/')) }}</a>
+                                                            <br>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
                                         @endif
                                     </td>
                                 </tr>
@@ -113,16 +139,18 @@
                     <!-- /.card-body -->
                     <div class="card-footer d-flex justify-content-center">
                         <a class="w-100 m-1" href="{{ route('staff.track.delete', $track->track_id) }}"
-                                    onclick="return confirm('- この店舗を削除しますか?:')"><button type="button"
-                                        class="btn bg-danger text-white text-nowrap w-100 btn-lg"
-                                        disabled>{{ __('delete') }}</button></a>
-                        
-                        <a class="btn bg-warning text-white text-nowrap w-100 btn-lg m-1" href="{{ route('staff.track.edit', $track->track_id) }}">{{ __('edit') }}</a>
+                            onclick="return confirm('- この店舗を削除しますか?:')"><button type="button"
+                                class="btn bg-danger text-white text-nowrap w-100 btn-lg"
+                                disabled>{{ __('delete') }}</button></a>
+
+                        <a class="btn bg-warning text-white text-nowrap w-100 btn-lg m-1"
+                            href="{{ route('staff.track.edit', $track->track_id) }}">{{ __('edit') }}</a>
                         @if ($track->track_status == 1)
-                            <a class="btn bg-olive text-white text-nowrap w-100 btn-lg m-1" href="{{ route('staff.track.report', $track->track_id) }}">{{ __('report') }}</a>
-                        @endif
                             <a class="btn bg-olive text-white text-nowrap w-100 btn-lg m-1"
-                                href="{{ route('staff.track.index') }}">{{ __('back') }}</a>
+                                href="{{ route('staff.track.report', $track->track_id) }}">{{ __('report') }}</a>
+                        @endif
+                        <a class="btn bg-olive text-white text-nowrap w-100 btn-lg m-1"
+                            href="{{ route('staff.track.index') }}">{{ __('back') }}</a>
                     </div>
                 </div>
                 <!-- /.card -->

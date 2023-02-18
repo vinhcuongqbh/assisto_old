@@ -7,6 +7,7 @@ use App\Models\TrackReportMedia;
 use App\Models\Track;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
 class TrackController extends Controller
@@ -79,16 +80,23 @@ class TrackController extends Controller
         }
         $track->save();
 
-        //Xử lý ảnh tải lên
+        //Xử lý file tải lên
         if ($request->hasFile('files')) {
-            $allowedfileExtension = ['pdf', 'jpg', 'png', 'docx', 'doc', 'xlsx', 'xls'];
+            $allowedfileExtension = ['pdf', 'jpg', 'jpeg', 'png', 'bmp', 'docx', 'doc', 'xlsx', 'xls', 'ppt', 'pptx', 'txt'];
+            $imgExtension = ['jpg', 'jpeg', 'png', 'bmp'];
             $files = $request->file('files');
             foreach ($files as $file) {
-                //$filename = $file->getClientOriginalName();
+                $filename = strtotime("now") . "_" . $file->getClientOriginalName();
                 $extension = $file->getClientOriginalExtension();
                 $check = in_array($extension, $allowedfileExtension);
                 if ($check) {
-                    $path = $file->store('public/File');
+                    if (in_array($extension, $imgExtension)) {
+                        echo "img";
+                        $path = $file->store('public/File');
+                    } else {
+                        echo "not img";
+                        $path = $file->storeAs('public/File', $filename);
+                    }
                     $path = substr($path, strlen('public/'));
                     $trackReportMedia = new TrackReportMedia;
                     $trackReportMedia->track_report_media_url = $path;
@@ -97,8 +105,6 @@ class TrackController extends Controller
                     $trackReportMedia->save();
                 }
             }
-        } else {
-            echo '<div class="alert alert-warning"><strong>Warning!</strong> Sorry Only Upload png , jpg , doc</div>';
         }
 
         if (Auth::user()->roleId != 3) return redirect()->route('track.show', ['id' => $track->track_id]);
@@ -180,15 +186,23 @@ class TrackController extends Controller
         $track->save();
 
         //Xử lý ảnh tải lên
+        //Xử lý file tải lên
         if ($request->hasFile('files')) {
-            $allowedfileExtension = ['pdf', 'jpg', 'png', 'docx', 'doc', 'xlsx', 'xls'];
+            $allowedfileExtension = ['pdf', 'jpg', 'jpeg', 'png', 'bmp', 'docx', 'doc', 'xlsx', 'xls', 'ppt', 'pptx', 'txt'];
+            $imgExtension = ['jpg', 'jpeg', 'png', 'bmp'];
             $files = $request->file('files');
             foreach ($files as $file) {
-                $filename = $file->getClientOriginalName();
+                $filename = strtotime("now") . "_" . $file->getClientOriginalName();
                 $extension = $file->getClientOriginalExtension();
                 $check = in_array($extension, $allowedfileExtension);
                 if ($check) {
-                    $path = $file->store('public/File');
+                    if (in_array($extension, $imgExtension)) {
+                        echo "img";
+                        $path = $file->store('public/File');
+                    } else {
+                        echo "not img";
+                        $path = $file->storeAs('public/File', $filename);
+                    }
                     $path = substr($path, strlen('public/'));
                     $trackReportMedia = new TrackReportMedia;
                     $trackReportMedia->track_report_media_url = $path;
@@ -217,6 +231,9 @@ class TrackController extends Controller
     public function deletefile($id)
     {
         $trackReportMedia = TrackReportMedia::where('track_report_media_id', $id)->first();
+        if (Storage::exists('public/' . $trackReportMedia->track_report_media_url)) {
+            Storage::delete('public/' . $trackReportMedia->track_report_media_url);
+        }
         $trackReportMedia->delete();
         return back();
     }

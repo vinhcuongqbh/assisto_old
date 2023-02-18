@@ -14,7 +14,8 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-auto">
-                                <a href="{{ route('user.create') }}"><button type="button" class="btn bg-olive text-white w-100"><span>{{ __('newUser') }}</span></button></a>
+                                <a href="{{ route('user.create') }}"><button type="button"
+                                        class="btn bg-olive text-white w-100"><span>{{ __('newUser') }}</span></button></a>
                             </div>
                         </div>
                     </div>
@@ -24,13 +25,24 @@
                             @csrf
                             <div class="row">
                                 <div class="col-12 col-xl-2 my-2">
-                                    <input type="text" class="form-control" id="userID" name="userID" placeholder="{{ __('userID') }}">
+                                    <input type="text" class="form-control" id="userID" name="userID"
+                                        placeholder="{{ __('userID') }}">
                                 </div>
                                 <div class="col-12 col-xl-2 my-2">
-                                    <input type="text" class="form-control" id="userName" name="userName" placeholder="{{ __('userName') }}">
-                                </div>                                
+                                    <input type="text" class="form-control" id="userName" name="userName"
+                                        placeholder="{{ __('userName') }}">
+                                </div>
                                 <div class="col-12 col-xl-2 my-2">
-                                    <button type="submit" class="btn bg-olive text-white w-100">{{ __('search') }}</button>
+                                    <input type="text" class="form-control" id="centerID" name="centerID"
+                                        placeholder="{{ __('centerID') }}">
+                                </div>
+                                <div class="col-12 col-xl-2 my-2">
+                                    <input type="text" class="form-control" id="centerName" name="centerName"
+                                        placeholder="{{ __('centerName') }}">
+                                </div>
+                                <div class="col-12 col-xl-2 my-2">
+                                    <button type="submit"
+                                        class="btn bg-olive text-white w-100">{{ __('search') }}</button>
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -57,20 +69,24 @@
                             <tbody>
                                 @foreach ($users as $user)
                                     <tr>
-                                        <td style="text-align: center"><a href="{{ route('user.show', $user->userId) }}">{{ $user->userId }}</a></td>
+                                        <td style="text-align: center"><a
+                                                href="{{ route('user.show', $user->userId) }}">{{ $user->userId }}</a>
+                                        </td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->centerName }}</td>
                                         <td>{{ $user->roleName }}</td>
                                         <td style="text-align: center">
                                             <a href="{{ route('user.edit', $user->userId) }}">
-                                                <button type="button" class="btn bg-olive text-white w-100">{{ __('edit') }}</button>
+                                                <button type="button"
+                                                    class="btn bg-olive text-white w-100">{{ __('edit') }}</button>
                                             </a>
                                         </td>
                                         <td>
                                             @if ($user->isDeleted == 0)
                                                 <a href="{{ route('user.delete', $user->userId) }}"
                                                     onclick="return confirm('{{ __('deleteUser') }}')">
-                                                    <button type="button" class="btn btn-danger text-white w-100">{{ __('delete') }}</button>
+                                                    <button type="button"
+                                                        class="btn btn-danger text-white w-100">{{ __('delete') }}</button>
                                                 </a>
                                             @else
                                                 <a href="{{ route('user.restore', $user->userId) }}"
@@ -126,7 +142,7 @@
                 "lengthChange": false,
                 "pageLength": 25,
                 "searching": false,
-                "autoWidth": false,                
+                "autoWidth": false,
                 "ordering": false,
                 //"buttons": ["copy", "excel", "pdf", "print"],
                 // "language": {

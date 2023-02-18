@@ -35,10 +35,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="text-bold" style="width: 30%">
+                                    <td class="text-bold">
                                         {{ __('date') }}
                                     </td>
-                                    <td style="width: 70%">
+                                    <td>
                                         {{ $track->track_date }}
                                     </td>
                                 </tr>
@@ -96,14 +96,43 @@
                                     </td>
                                     <td>
                                         @if (isset($trackReportMedias))
-                                            <?php $i = 1; ?>
-                                            @foreach ($trackReportMedias as $trackReportMedia)
-                                                <a href="/storage/{{ $trackReportMedia->track_report_media_url }}"
-                                                    target="_blank"><img src="/img/file.png"
-                                                        style="width:30px; height:30x">File Attachment
-                                                    {{ $i++ }}&nbsp&nbsp&nbsp</a>
-                                                <br>
-                                            @endforeach
+                                            <?php
+                                            $img = ['jpg', 'jpeg', 'png', 'bmp'];
+                                            ?>
+                                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                                                @foreach ($trackReportMedias as $trackReportMedia)
+                                                    @if (in_array(substr($trackReportMedia->track_report_media_url, -3), $img))
+                                                        <div>
+                                                            <img style="width:
+                                                                100%"
+                                                                src="/storage/{{ $trackReportMedia->track_report_media_url }}">
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-bold">
+                                    </td>
+                                    <td>
+                                        @if (isset($trackReportMedias))
+                                            <?php
+                                            $img = ['jpg', 'jpeg', 'png', 'bmp'];
+                                            ?>
+                                            <div>
+                                                @foreach ($trackReportMedias as $trackReportMedia)
+                                                    @if (!in_array(substr($trackReportMedia->track_report_media_url, -3), $img))
+                                                        <div>
+                                                            <a href="/storage/{{ $trackReportMedia->track_report_media_url }}"
+                                                                target="_blank"><img src="/img/file.png"
+                                                                    style="width:30px; height:30x">{{ substr($trackReportMedia->track_report_media_url, strlen('File/')) }}</a>
+                                                            <br>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
                                         @endif
                                     </td>
                                 </tr>

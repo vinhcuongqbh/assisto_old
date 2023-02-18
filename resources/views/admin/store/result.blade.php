@@ -37,7 +37,7 @@
                                     <input type="text" class="form-control" id="telephone" name="telephone" placeholder="{{ __('telephone') }}">
                                 </div>
                                 <div class="col-12 col-xl-2 my-2">
-                                    <input type="text" class="form-control" id="centerID" name="centerID" placeholder="{{ __('centerID') }}">
+                                    <input type="text" class="form-control" id="centerName" name="centerID" placeholder="{{ __('centerName') }}">
                                 </div>
                                 <div class="col-12 col-xl-2 my-2">
                                     <button type="submit" class="btn bg-olive text-white w-100">{{ __('search') }}</button>
@@ -47,10 +47,11 @@
                         </form>
                         <table id="store-table" class="table table-bordered table-striped">
                             <colgroup>
+                                <col style="width:8%;">
+                                <col style="width:20%;">
+                                <col style="width:33%;">
                                 <col style="width:10%;">
-                                <col style="width:28%;">
-                                <col style="width:36%;">
-                                <col style="width:10%;">
+                                <col style="width:20%;">
                                 <col style="width:8%;">
                                 <col style="width:8%;">
                             </colgroup>
@@ -60,6 +61,7 @@
                                     <th>{{ __('storeName') }}</th>
                                     <th>{{ __('address') }}</th>
                                     <th>{{ __('telephone') }}</th>
+                                    <th>{{ __('centerName') }}</th>
                                     <th>{{ __('edit') }}</th>
                                     <th>{{ __('delete') }}</th>
                                 </tr>
@@ -73,6 +75,7 @@
                                         <td>{{ $store->storeName }}</td>
                                         <td>{{ $store->storeAddr }}</td>
                                         <td>{{ $store->storeTel }}</td>
+                                        <td>{{ $store->centerName }}</td>
                                         <td style="text-align: center">
                                             <a href="{{ route('store.edit', $store->storeId) }}">
                                                 <button type="button"

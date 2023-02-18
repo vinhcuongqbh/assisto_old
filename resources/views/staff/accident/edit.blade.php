@@ -138,26 +138,34 @@
                                     <div class="col-12 col-md-10">
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" name="carImage[]" accept="image/*"
-                                                    multiple />
+                                                <input type="file" class="custom-file-input" name="carImage[]"
+                                                    accept="image/*" multiple />
                                                 <label class="custom-file-label"
                                                     for="inputFile">{{ __('ChooseFile') }}</label>
                                             </div>
                                         </div>
                                         <br>
                                         @if (isset($accidentCarMedias))
-                                            <?php $i = 1; ?>
-                                            @foreach ($accidentCarMedias as $accidentCarMedia)
-                                                <a href="/storage/{{ $accidentCarMedia->car_media_url }}"
-                                                    target="_blank"><img src="/img/file.png"
-                                                        style="width:30px; height:30x">File Attachment
-                                                    {{ $i++ }}&nbsp&nbsp&nbsp</a>
-                                                <a
-                                                    href="{{ route('staff.accident.deleteCarImage', $accidentCarMedia->car_media_id) }}"><img
-                                                        src="/img/delete.png" style="width: 15px; height:15x"></a>
-                                                <br>
-                                            @endforeach
-                                        @endif                                        
+                                            <?php
+                                            $i = 1;
+                                            $img = ['jpg', 'jpeg', 'png', 'bmp'];
+                                            ?>
+                                            <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 10px;">
+                                                @foreach ($accidentCarMedias as $accidentCarMedia)
+                                                    @if (in_array(substr($accidentCarMedia->car_media_url, -3), $img))
+                                                        <div>
+                                                            <img style="width:
+                                                                100%"
+                                                                src="/storage/{{ $accidentCarMedia->car_media_url }}">
+                                                            <a
+                                                                href="{{ route('staff.accident.deleteCarImage', $accidentCarMedia->car_media_id) }}"><button
+                                                                    type="button" class="btn btn-sm bg-danger"
+                                                                    style="float: right; margin-top: 5px">{{ __('delete') }}</button></a>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -236,26 +244,34 @@
                                     <div class="col-12 col-md-10">
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" name="insuranceImage[]" accept="image/*"
-                                                    multiple />
+                                                <input type="file" class="custom-file-input" name="insuranceImage[]"
+                                                    accept="image/*" multiple />
                                                 <label class="custom-file-label"
                                                     for="inputFile">{{ __('ChooseFile') }}</label>
                                             </div>
                                         </div>
                                         <br>
                                         @if (isset($accidentPeopleMedias))
-                                            <?php $i = 1; ?>
-                                            @foreach ($accidentPeopleMedias as $accidentPeopleMedia)
-                                                <a href="/storage/{{ $accidentPeopleMedia->insurance_media_url }}"
-                                                    target="_blank"><img src="/img/file.png"
-                                                        style="width:30px; height:30x">File Attachment
-                                                    {{ $i++ }}&nbsp&nbsp&nbsp</a>
-                                                <a
-                                                    href="{{ route('staff.accident.deleteInsuranceImage', $accidentPeopleMedia->insurance_media_id) }}"><img
-                                                        src="/img/delete.png" style="width: 15px; height:15x"></a>
-                                                <br>
-                                            @endforeach
-                                        @endif                                        
+                                            <?php
+                                            $i = 1;
+                                            $img = ['jpg', 'jpeg', 'png', 'bmp'];
+                                            ?>
+                                            <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 10px;">
+                                                @foreach ($accidentPeopleMedias as $accidentPeopleMedia)
+                                                    @if (in_array(substr($accidentPeopleMedia->insurance_media_url, -3), $img))
+                                                        <div>
+                                                            <img style="width:
+                                                                100%"
+                                                                src="/storage/{{ $accidentPeopleMedia->insurance_media_url }}">
+                                                            <a
+                                                                href="{{ route('staff.accident.deleteInsuranceImage', $accidentPeopleMedia->insurance_media_id) }}"><button
+                                                                    type="button" class="btn btn-sm bg-danger"
+                                                                    style="float: right; margin-top: 5px">{{ __('delete') }}</button></a>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <p>※その場で相手と示談交渉はしない。陳謝は良いが必ず事故係から連絡させる事を相手に伝える。</p>
@@ -356,26 +372,34 @@
                                     <div class="col-12 col-md-10">
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" name="accidentImage[]" accept="image/*"
-                                                    multiple />
+                                                <input type="file" class="custom-file-input" name="accidentImage[]"
+                                                    accept="image/*" multiple />
                                                 <label class="custom-file-label"
                                                     for="inputFile">{{ __('ChooseFile') }}</label>
                                             </div>
                                         </div>
                                         <br>
                                         @if (isset($accidentMedias))
-                                            <?php $i = 1; ?>
-                                            @foreach ($accidentMedias as $accidentMedia)
-                                                <a href="/storage/{{ $accidentMedia->acc_media_url }}"
-                                                    target="_blank"><img src="/img/file.png"
-                                                        style="width:30px; height:30x">File Attachment
-                                                    {{ $i++ }}&nbsp&nbsp&nbsp</a>
-                                                <a
-                                                    href="{{ route('staff.accident.deleteAccidentImage', $accidentMedia->acc_media_id) }}"><img
-                                                        src="/img/delete.png" style="width: 15px; height:15x"></a>
-                                                <br>
-                                            @endforeach
-                                        @endif 
+                                            <?php
+                                            $i = 1;
+                                            $img = ['jpg', 'jpeg', 'png', 'bmp'];
+                                            ?>
+                                            <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 10px;">
+                                                @foreach ($accidentMedias as $accidentMedia)
+                                                    @if (in_array(substr($accidentMedia->acc_media_url, -3), $img))
+                                                        <div>
+                                                            <img style="width:
+                                                                100%"
+                                                                src="/storage/{{ $accidentMedia->acc_media_url }}">
+                                                            <a
+                                                                href="{{ route('staff.accident.deleteAccidentImage', $accidentMedia->acc_media_id) }}"><button
+                                                                    type="button" class="btn btn-sm bg-danger"
+                                                                    style="float: right; margin-top: 5px">{{ __('delete') }}</button></a>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -392,10 +416,16 @@
                                 <p>7. 医師の診察を受ける</p>
                                 <p>軽いけがだと思ったり、自覚症状がなくても必ず医師の診断を受ける。領収書や診断書は保存しておく。</p>
                             </div>
-                        </div><!-- /.card-body --><div class="card-footer d-flex justify-content-center">
-                            <button type="submit" name="action" value="report" class="btn btn-lg bg-olive text-white w-100 text-nowrap m-1" style="max-width: 400px;">{{ __('report') }}</button>
-                            <button type="submit" name="action" value="draft" class="btn btn-lg btn-warning text-white w-100 text-nowrap m-1" style="max-width: 400px;">{{ __('draft') }}</button>
-                            <a class="btn btn-lg bg-olive text-white w-100 text-nowrap m-1" style="max-width: 400px;" href="{{ route('staff.accident.show', $accident->acc_id) }}">{{ __('back') }}</a>
+                        </div><!-- /.card-body -->
+                        <div class="card-footer d-flex justify-content-center">
+                            <button type="submit" name="action" value="report"
+                                class="btn btn-lg bg-olive text-white w-100 text-nowrap m-1"
+                                style="max-width: 400px;">{{ __('report') }}</button>
+                            <button type="submit" name="action" value="draft"
+                                class="btn btn-lg btn-warning text-white w-100 text-nowrap m-1"
+                                style="max-width: 400px;">{{ __('draft') }}</button>
+                            <a class="btn btn-lg bg-olive text-white w-100 text-nowrap m-1" style="max-width: 400px;"
+                                href="{{ route('staff.accident.show', $accident->acc_id) }}">{{ __('back') }}</a>
                         </div>
                     </form>
                     {{-- <div class="card-footer">

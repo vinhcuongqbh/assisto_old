@@ -95,18 +95,49 @@
                                     </div>
                                     <br>
                                     @if (isset($trackReportMedias))
-                                        <?php $i = 1; ?>
-                                        @foreach ($trackReportMedias as $trackReportMedia)
-                                            <a href="/storage/{{ $trackReportMedia->track_report_media_url }}"><img
-                                                    src="/img/file.png" style="width:30px; height:30x">File Attachment
-                                                {{ $i++ }}&nbsp&nbsp&nbsp</a>
-                                            <a
-                                                href="{{ route('staff.track.deletefile', $trackReportMedia->track_report_media_id) }}"><img
-                                                    src="/img/delete.png" style="width: 15px; height:15x"></a>
-                                            <br>
-                                        @endforeach
+                                        <?php
+                                        $img = ['jpg', 'jpeg', 'png', 'bmp'];
+                                        ?>
+                                        <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 10px;">
+                                            @foreach ($trackReportMedias as $trackReportMedia)
+                                                @if (in_array(substr($trackReportMedia->track_report_media_url, -3), $img))
+                                                    <div>
+                                                        <img style="width:
+                                                                100%"
+                                                            src="/storage/{{ $trackReportMedia->track_report_media_url }}">
+                                                        <a
+                                                            href="{{ route('track.deletefile', $trackReportMedia->track_report_media_id) }}"><button
+                                                                type="button" class="btn btn-sm bg-danger"
+                                                                style="float: right; margin-top: 5px">{{ __('delete') }}</button></a>
+
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
                                     @endif
+
                                     <br>
+
+                                    @if (isset($trackReportMedias))
+                                        <?php                                       
+                                        $img = ['jpg', 'jpeg', 'png', 'bmp'];
+                                        ?>
+                                        <div>
+                                            @foreach ($trackReportMedias as $trackReportMedia)
+                                                @if (!in_array(substr($trackReportMedia->track_report_media_url, -3), $img))
+                                                    <div>
+                                                        <a href="/storage/{{ $trackReportMedia->track_report_media_url }}"
+                                                            target="_blank"><img src="/img/file.png"
+                                                                style="width:30px; height:30x">{{ substr($trackReportMedia->track_report_media_url, strlen('File/')) }}</a>
+                                                        <a
+                                                            href="{{ route('track.deletefile', $trackReportMedia->track_report_media_id) }}"><button
+                                                                type="button" class="btn btn-sm bg-danger">{{ __('delete') }}</button></a>
+                                                        <br>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    @endif
 
                                 </div>
                             </div>
@@ -121,7 +152,7 @@
                                 </div>
                                 <div class="col-3 col-md-2">
                                     <button class="btn bg-olive text-white w-100 text-nowrap"><a
-                                        href="{{ route('staff.track.show', $track->track_id) }}">{{ __('cancel') }}</a></button>
+                                            href="{{ route('staff.track.show', $track->track_id) }}">{{ __('cancel') }}</a></button>
                                 </div>
                             </div>
                         </div>

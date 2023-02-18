@@ -54,42 +54,42 @@
                             <table class="table table-striped projects p-0 m-0">
                                 <tbody>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold" style="width: 30%">
                                             {{ __('name') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td style="width: 70%">
                                             {{ $accidentPeople->acc_involved_people_name }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('address') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accidentPeople->acc_involved_people_addr }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('contact') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accidentPeople->acc_involved_people_contact }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('telephone') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accidentPeople->acc_involved_people_tel }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('company') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accidentPeople->acc_involved_people_company }}
                                         </td>
                                     </tr>
@@ -100,18 +100,18 @@
                             <table class="table table-striped projects p-0 m-0">
                                 <tbody>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold" style="width: 30%">
                                             {{ __('name') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td style="width: 70%">
                                             {{ $accidentPeople->acc_involved_people_other }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('contact') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accidentPeople->acc_involved_people_other_contact }}
                                         </td>
                                     </tr>
@@ -125,34 +125,34 @@
                             <table class="table table-striped projects p-0 m-0">
                                 <tbody>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold" style="width: 30%">
                                             {{ __('carNumberPalette') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td style="width: 70%">
                                             {{ $accidentCar->car_number_palette }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('carType') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accidentCar->car_type }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('carColor') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accidentCar->car_color }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('carImage') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             @if (isset($accidentCarMedias))
                                                 <?php
                                                 $i = 1;
@@ -173,10 +173,10 @@
                                             @endif
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                    {{-- <tr>
+                                        <td class="text-bold">
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             @if (isset($accidentCarMedias))
                                                 <?php
                                                 $i = 1;
@@ -198,28 +198,28 @@
                                                 </div>
                                             @endif
                                         </td>
-                                    </tr>
+                                    </tr> --}}
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('carSpeed') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accidentCar->car_speed }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('carRepairGarageAddress') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accidentCar->car_repair_garage }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('carRepairGarageTel') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accidentCar->car_repair_garage_tel }}
                                         </td>
                                     </tr>
@@ -231,26 +231,26 @@
                             <table class="table table-striped projects p-0 m-0">
                                 <tbody>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold" style="width: 30%">
                                             {{ __('carSpeed') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td style="width: 70%">
                                             {{ $accident->our_truck_speed }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('carRepairGarageAddress') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accident->our_truck_repair_garage_addr }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('carRepairGarageTel') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accident->our_truck_repair_garage_tel }}
                                         </td>
                                     </tr>
@@ -265,26 +265,26 @@
                             <table class="table table-striped projects p-0 m-0">
                                 <tbody>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold" style="width: 30%">
                                             {{ __('insuranceCompanyName') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td style="width: 70%">
                                             {{ $accidentPeople->acc_involved_people_insurance_company }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('insuranceNumber') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accidentPeople->acc_involved_people_insurance_number }}
                                         </td>
                                     </tr>                                    
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('insuranceImage') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             @if (isset($accidentPeopleMedias))
                                                 <?php
                                                 $i = 1;
@@ -305,10 +305,10 @@
                                             @endif
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                    {{-- <tr>
+                                        <td class="text-bold">
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             @if (isset($accidentPeopleMedias))
                                                 <?php
                                                 $i = 1;
@@ -330,7 +330,7 @@
                                                 </div>
                                             @endif
                                         </td>
-                                    </tr>
+                                    </tr> --}}
                                 </tbody>
                             </table>
                             <br>
@@ -344,106 +344,106 @@
                             <table class="table table-striped projects p-0 m-0">
                                 <tbody>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold" style="width: 30%">
                                             {{ __('roadType') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td style="width: 70%">
                                             {{ $accident->road_type_name }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('roadWidth') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accident->onsite_road_width }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('outlook') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accident->onsite_outlook }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('trafficSign') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accident->onsite_traffic_signs }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('date') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accident->acc_date }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('time') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accident->acc_time }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('collisionPoint') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accident->onsite_collision_point }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('parkPosition') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accident->onsite_park_position }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('victim') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accident->onsite_victim }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('witness') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accident->onsite_witness }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('content') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accident->acc_content }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('status') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             {{ $accident->track_status_name }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                        <td class="text-bold">
                                             {{ __('accidentImage') }}
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             @if (isset($accidentMedias))
                                                 <?php
                                                 $i = 1;
@@ -464,10 +464,10 @@
                                             @endif
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="text-bold" style="width: 20%">
+                                    {{-- <tr>
+                                        <td class="text-bold">
                                         </td>
-                                        <td style="width: 80%">
+                                        <td>
                                             @if (isset($accidentMedias))
                                                 <?php
                                                 $i = 1;
@@ -489,7 +489,7 @@
                                                 </div>
                                             @endif
                                         </td>
-                                    </tr>
+                                    </tr> --}}
                                 </tbody>
                             </table>
                         </div>

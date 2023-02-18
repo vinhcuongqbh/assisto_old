@@ -36,9 +36,12 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" id="telephone" name="telephone" placeholder="{{ __('telephone') }}">
                                 </div>
-                                <div class="form-group m-0">
+                                <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" id="centerID" name="centerID" placeholder="{{ __('centerID') }}">
-                                </div>                            
+                                </div>    
+                                <div class="form-group m-0">
+                                    <input type="text" class="form-control form-control-lg" id="centerName" name="centerName" placeholder="{{ __('centerName') }}">
+                                </div>                         
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">

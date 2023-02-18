@@ -33,6 +33,14 @@
                                         placeholder="{{ __('userName') }}">
                                 </div>
                                 <div class="col-12 col-xl-2 my-2">
+                                    <input type="text" class="form-control" id="centerID" name="centerID"
+                                        placeholder="{{ __('centerID') }}">
+                                </div>
+                                <div class="col-12 col-xl-2 my-2">
+                                    <input type="text" class="form-control" id="centerName" name="centerName"
+                                        placeholder="{{ __('centerName') }}">
+                                </div>
+                                <div class="col-12 col-xl-2 my-2">
                                     <button type="submit"
                                         class="btn bg-olive text-white w-100 text-nowrap">{{ __('search') }}</button>
                                 </div>
@@ -54,7 +62,7 @@
                                     <th>{{ __('centerName') }}</th>
                                     <th>{{ __('userRole') }}</th>
                                     <th>{{ __('edit') }}</th>
-                                    <th>{{ __('enable') }}/{{ __('disenable') }}</th>
+                                    <th>{{ __('enable') }}/{{ __('disable') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
