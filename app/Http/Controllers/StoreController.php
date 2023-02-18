@@ -20,7 +20,7 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $store = Store::join('asahi_center', 'asahi_center.centerId', 'asahi_store.centerId')
+        $store = Store::leftjoin('asahi_center', 'asahi_center.centerId', 'asahi_store.centerId')
             ->select('asahi_store.*', 'asahi_center.centerName')
             ->get();
 
