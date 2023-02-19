@@ -39,10 +39,11 @@
                             <thead style="text-align: center">
                                 <tr>
                                     <th>No</th>
-                                    <th>{{ __('date') }}</th>
-                                    <th>{{ __('time') }}</th>
+                                    <th>{{ __('date') }} {{ __('time') }}</th>
                                     <th>{{ __('place') }}</th>
-                                    <th>{{ __('summary') }}</th>
+                                    <th>{{ __('userID') }}</th>
+                                    <th>{{ __('userName') }}</th>
+                                    <th>{{ __('centerName') }}</th>
                                     <th>{{ __('status') }}</th>
                                 </tr>
                             </thead>
@@ -53,10 +54,11 @@
                                             <a
                                                 href="{{ route('staff.accident.show', $accident->acc_id) }}">{{ $accident->acc_id }}</a>
                                         </td>
-                                        <td>{{ $accident->acc_date }}</td>
-                                        <td>{{ $accident->acc_time }}</td>
+                                        <td>{{ $accident->acc_date." ".$accident->acc_time }}</td>
                                         <td>{{ $accident->onsite_collision_point }}</td>
-                                        <td>{{ $accident->acc_content }}</td>
+                                        <td>{{ $accident->userId }}</td>
+                                        <td>{{ $accident->name }}</td>
+                                        <td>{{ $accident->centerName }}</td>
                                         <td>{{ $accident->track_status_name }}</td>
                                     </tr>
                                 @endforeach
@@ -82,7 +84,7 @@
     <script src="/vendor/jquery-validation/jquery.validate.min.js"></script>
     <script src="/vendor/jquery-validation/additional-methods.min.js"></script>
     <!-- Page specific script -->
-    <script>
+    {{-- <script>
         $(function() {
             $('#accident-search').validate({
                 rules: {
@@ -109,7 +111,7 @@
                 }
             });
         });
-    </script>
+    </script> --}}
 
     <script src="/vendor/jquery/jquery.min.js"></script>
     <!-- DataTables  & Plugins -->

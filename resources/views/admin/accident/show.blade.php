@@ -279,7 +279,7 @@
                                         <td>
                                             {{ $accidentPeople->acc_involved_people_insurance_number }}
                                         </td>
-                                    </tr>                                    
+                                    </tr>
                                     <tr>
                                         <td class="text-bold">
                                             {{ __('insuranceImage') }}
@@ -506,26 +506,17 @@
                             <p>7. 医師の診察を受ける</p>
                             <p>軽いけがだと思ったり、自覚症状がなくても必ず医師の診断を受ける。領収書や診断書は保存しておく。</p>
                         </div>
-                        <div class="form-group row justify-content-end">
-                            <div class="col-3 col-md-2">
-                                <a href="{{ route('staff.accident.delete', $accident->acc_id) }}"
-                                    onclick="return confirm('- この店舗を削除しますか?:')"><button type="button"
-                                        class="btn bg-danger text-white w-100 m-1"
-                                        disabled="">{{ __('delete') }}</button></a>
-                            </div>
-                            <div class="col-3 col-md-2">
-                                <a href="{{ route('staff.accident.edit', $accident->acc_id) }}"><button type="button"
-                                        class="btn bg-olive text-white w-100 m-1">{{ __('edit') }}</button></a>
-                            </div>
-                            @if ($accident->acc_status == 1)
-                                <div class="col-3 col-md-2">
-                                    <a href="{{ route('staff.accident.report', $accident->acc_id) }}"><button
-                                            type="button"
-                                            class="btn bg-olive text-white w-100 m-1">{{ __('report') }}</button></a>
-                                </div>
-                            @endif
-                        </div>
                     </div><!-- /.card-body -->
+                    <div class="card-footer d-flex justify-content-center">
+                        <a class="btn btn-warning w-100 text-nowrap m-1"
+                            href="{{ route('staff.accident.edit', $accident->acc_id) }}">{{ __('edit') }}</a>
+                        @if ($accident->acc_status == 1)
+                            <a class="btn btn-warning w-100 text-nowrap m-1"
+                                href="{{ route('staff.accident.report', $accident->acc_id) }}">{{ __('report') }}</a>
+                        @endif
+                        <a class="btn bg-olive text-white w-100 text-nowrap m-1"
+                            href="{{ route('accident') }}">{{ __('back') }}</a>
+                    </div>
                 </div>
                 <!-- /.card -->
             </div>

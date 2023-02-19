@@ -38,14 +38,14 @@
                         <hr> --}}
 
                         <table id="search-table" class="table table-bordered table-striped">
-                            <thead>
+                            <thead style="text-align: center">
                                 <tr>
-                                    <th style="text-align: center">No</th>
-                                    <th style="text-align: center">{{ __('date') }}</th>
-                                    <th style="text-align: center">{{ __('time') }}</th>
-                                    <th style="text-align: center">{{ __('place') }}</th>
-                                    <th style="text-align: center">{{ __('summary') }}</th>
-                                    <th style="text-align: center">{{ __('status') }}</th>
+                                    <th>{{ __('date') }} {{ __('time') }}</th>
+                                    <th>{{ __('place') }}</th>
+                                    <th>{{ __('userID') }}</th>
+                                    <th>{{ __('userName') }}</th>
+                                    <th>{{ __('centerName') }}</th>
+                                    <th>{{ __('status') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -55,10 +55,11 @@
                                             <a
                                                 href="{{ route('staff.accident.show', $accident->acc_id) }}">{{ $accident->acc_id }}</a>
                                         </td>
-                                        <td>{{ $accident->acc_date }}</td>
-                                        <td>{{ $accident->acc_time }}</td>
+                                        <td>{{ $accident->acc_date." ".$accident->acc_time }}</td>
                                         <td>{{ $accident->onsite_collision_point }}</td>
-                                        <td>{{ $accident->acc_content }}</td>
+                                        <td>{{ $accident->userId }}</td>
+                                        <td>{{ $accident->name }}</td>
+                                        <td>{{ $accident->centerName }}</td>
                                         <td>{{ $accident->track_status_name }}</td>
                                     </tr>
                                 @endforeach

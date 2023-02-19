@@ -75,9 +75,12 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-danger text-white w-100 text-nowrap m-1" data-toggle="modal" data-target="#reset-pass">{{ __('changePassword') }}</button>
-                            <button type="submit" class="btn btn-warning w-100 text-nowrap m-1">{{ __('update') }}</button>
-                            <button onclick="javascript:history.back()" class="btn bg-olive text-white w-100 text-nowrap m-1">{{ __('back') }}</button>
+                            <button type="button" class="btn btn-danger text-white w-100 text-nowrap m-1"
+                                data-toggle="modal" data-target="#reset-pass">{{ __('changePassword') }}</button>
+                            <button type="submit"
+                                class="btn btn-warning w-100 text-nowrap m-1">{{ __('update') }}</button>
+                            <button onclick="javascript:history.back()"
+                                class="btn bg-olive text-white w-100 text-nowrap m-1">{{ __('back') }}</button>
                         </div>
                     </form>
                 </div>
@@ -151,7 +154,7 @@
                     },
                     roleId: {
                         required: true,
-                    },
+                    }
                 },
                 messages: {
                     userId: {
@@ -165,12 +168,39 @@
                     },
                     roleId: {
                         required: "{{ __('selectUserRole') }}",
-                    },
+                    }
                 },
                 errorElement: 'span',
                 errorPlacement: function(error, element) {
                     error.addClass('invalid-feedback');
                     element.closest('.col-sm-9').append(error);
+
+                },
+                highlight: function(element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+            });
+        });
+    </script>
+    <script>
+        //Kiểm tra dữ liệu đầu vào
+        $(function() {
+            $('#form-resetpass').validate({
+                rules: {
+                    confirmPassword: {
+                        equalTo: "#password"
+                    }
+                },
+                messages: {
+                    confirmPassword: "{{ __('samePassword') }}",
+                },
+                errorElement: 'span',
+                errorPlacement: function(error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('div').append(error);
 
                 },
                 highlight: function(element, errorClass, validClass) {

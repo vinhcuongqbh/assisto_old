@@ -39,10 +39,12 @@
                             <thead>
                                 <tr>
                                     <th style="text-align: center">No</th>
-                                    <th style="text-align: center">{{ __('date') }}</th>
-                                    <th style="text-align: center">{{ __('time') }}</th>
+                                    <th style="text-align: center">{{ __('date') }} {{ __('time') }}</th>
                                     <th style="text-align: center">{{ __('place') }}</th>
                                     <th style="text-align: center">{{ __('title') }}</th>
+                                    <th style="text-align: center">{{ __('userID') }}</th>
+                                    <th style="text-align: center">{{ __('userName') }}</th>
+                                    <th style="text-align: center">{{ __('centerName') }}</th>
                                     <th style="text-align: center">{{ __('status') }}</th>
                                 </tr>
                             </thead>
@@ -53,10 +55,12 @@
                                             <a
                                                 href="{{ route('track.show', $track->track_id) }}">{{ $track->track_id }}</a>
                                         </td>
-                                        <td>{{ $track->track_date }}</td>
-                                        <td>{{ $track->track_time }}</td>
+                                        <td>{{ $track->track_date." ".$track->track_time }}</td>
                                         <td>{{ $track->track_place }}</td>
                                         <td>{{ $track->track_title }}</td>
+                                        <td>{{ $track->userId }}</td>
+                                        <td>{{ $track->name }}</td>
+                                        <td>{{ $track->centerName }}</td>
                                         <td>{{ $track->track_status_name }}</td>
                                     </tr>
                                 @endforeach
@@ -81,7 +85,7 @@
     <script src="/vendor/jquery-validation/jquery.validate.min.js"></script>
     <script src="/vendor/jquery-validation/additional-methods.min.js"></script>
     <!-- Page specific script -->
-    <script>
+    {{-- <script>
         $(function() {
             $('#track-search').validate({
                 rules: {
@@ -108,7 +112,7 @@
                 }
             });
         });
-    </script>
+    </script> --}}
 
     <script src="/vendor/jquery/jquery.min.js"></script>
     <!-- DataTables  & Plugins -->

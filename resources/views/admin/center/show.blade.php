@@ -60,14 +60,14 @@
                                     class="form-control" disabled>
                             </div>
                         </div>
-                        <div class="form-group row justify-content-end">
-                            <div class="col-3 col-md-2">
-                                <a href="{{ route('center.edit', $center->centerId) }}"><button type="button"
-                                        class="btn bg-olive text-white w-100">{{ __('edit') }}</button></a>
-                            </div>
-                        </div>
                     </div>
                     <!-- /.card-body -->
+                    <div class="card-footer d-flex justify-content-center">
+                        <a class="btn btn-warning w-100 text-nowrap m-1"
+                            href="{{ route('center.edit', $center->centerId) }}">{{ __('edit') }}</a>
+                        <a class="btn bg-olive text-white w-100 text-nowrap m-1"
+                            href="{{ route('center') }}">{{ __('back') }}</a>
+                    </div>
                 </div>
                 <!-- /.card -->
             </div>

@@ -428,14 +428,6 @@
                                 href="{{ route('staff.accident.show', $accident->acc_id) }}">{{ __('back') }}</a>
                         </div>
                     </form>
-                    {{-- <div class="card-footer">
-                        <div class="form-group row justify-content-end">
-                            <div class="col-3 col-md-2">
-                                <a href="{{ route('staff.track.update', $track->track_id) }}"><button type="button"
-                                        class="btn bg-olive text-white w-100 m-1">{{ __('update') }}</button></a>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
                 <!-- /.card -->
             </div>

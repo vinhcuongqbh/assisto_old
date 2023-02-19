@@ -25,8 +25,10 @@ class AccidentController extends Controller
     public function index()
     {
         if (Auth::user()->roleId != 3) {
-            $accident = Accident::join('asahi_track_report_status', 'asahi_track_report_status.track_status_id', 'asahi_accident_report.acc_status')
-                ->select('asahi_accident_report.*', 'asahi_track_report_status.track_status_name')
+            $accident = Accident::leftjoin('moz_users', 'moz_users.id', 'asahi_accident_report.staff_id')
+                ->leftjoin('asahi_center', 'asahi_center.centerId', 'moz_users.centerId')
+                ->leftjoin('asahi_track_report_status', 'asahi_track_report_status.track_status_id', 'asahi_accident_report.acc_status')
+                ->select('asahi_accident_report.*', 'moz_users.userId', 'moz_users.name', 'asahi_center.centerName', 'asahi_track_report_status.track_status_name')
                 ->orderBy('asahi_accident_report.acc_date', 'desc')
                 ->get();
             return view('admin.accident.index', ['accidents' => $accident]);

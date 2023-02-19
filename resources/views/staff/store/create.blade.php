@@ -23,7 +23,8 @@
                             </ul>
                         </div>
                     @endif
-                    <form action="{{ route('staff.store.store') }}" method="post" id="store-create" enctype="multipart/form-data">
+                    <form action="{{ route('staff.store.store') }}" method="post" id="store-create"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             <div class="form-group row">
@@ -56,7 +57,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>                             
+                            </div>
                             <div class="form-group row">
                                 <div class="col-sm-3">
                                     <label for="address">{{ __('address') }}</label>
@@ -144,21 +145,21 @@
                                 <div class="col-sm-9">
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="inputFile" name="inputFile" accept="application/pdf">
-                                            <label class="custom-file-label" for="inputFile">{{ __('ChooseFile') }}</label>
+                                            <input type="file" class="custom-file-input" id="inputFile"
+                                                name="inputFile" accept="application/pdf">
+                                            <label class="custom-file-label"
+                                                for="inputFile">{{ __('ChooseFile') }}</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row justify-content-end">
-                                <div class="col-3 col-md-2">
-                                    <button type="submit" class="btn bg-olive text-white w-100 text-nowrap">{{ __('create') }}</button>
-                                </div>
-                                <div class="col-3 col-md-2">
-                                    <button class="btn bg-olive text-white w-100 text-nowrap"><a href="{{ route('staff.store') }}">{{ __('cancel') }}</a></button>
-                                </div>
-                            </div>
                         </div><!-- /.card-body -->
+                        <div class="card-footer d-flex justify-content-center">
+                            <button type="submit"
+                                class="btn btn-lg btn-warning text-white w-100 text-nowrap m-1">{{ __('create') }}</button>
+                            <a class="btn btn-lg bg-olive text-white w-100 text-nowrap m-1"
+                                href="{{ route('staff.store') }}">{{ __('back') }}</a>
+                        </div>
                     </form>
                 </div><!-- /.card -->
             </div>
@@ -185,22 +186,16 @@
                     storeName: {
                         required: true,
                     },
-                    inputFile: {
-                        required: true,
-                    },
                 },
-                messages: {   
+                messages: {
                     storeId: {
                         required: "{{ __('enterStoreID') }}",
-                    },                
+                    },
                     centerId: {
                         required: "{{ __('selectCenterName') }}",
                     },
                     storeName: {
                         required: "{{ __('enterStoreName') }}"
-                    },
-                    inputFile: {
-                        required: "{{ __('selectFile') }}"
                     },
                 },
                 errorElement: 'span',

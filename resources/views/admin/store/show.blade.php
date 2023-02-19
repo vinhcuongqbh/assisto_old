@@ -38,7 +38,8 @@
                             </div>
                             <div class="col-sm-9">
                                 <div class="input-group mb-3">
-                                    <input id="asaboUrl" type="text" class="form-control" value="https://as.vivujp.com/staff/store/{{ $store->storeId }}/show" disabled>
+                                    <input id="asaboUrl" type="text" class="form-control"
+                                        value="https://as.vivujp.com/staff/store/{{ $store->storeId }}/show" disabled>
                                     <div class="input-group-append">
                                         <a onclick="copyText()" class="btn btn-info"><i class="fas fa-copy"></i> Copy</a>
                                     </div>
@@ -131,8 +132,8 @@
                                 <label for="add1">{{ __('addtionally1') }}</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" id="add1" name="add1" value="{{ $store->asahiSupplement1 }}"
-                                    class="form-control" disabled>
+                                <input type="text" id="add1" name="add1"
+                                    value="{{ $store->asahiSupplement1 }}" class="form-control" disabled>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -155,32 +156,36 @@
                         <div class="form-group row">
                             <div class="col-sm-12">
                                 @if (isset($store))
-                                        <div class="col-12"><canvas class="the-canvas" id="the-canvas"></canvas></div>
-                                        {{-- <span hidden id="page_count"></span> --}}
-                                        <div class="col-12" style="padding: 5px 10px 10px 10px; text-align: center;">
-                                            <button type="button" class="btn btn-outline-default" id="prev">
-                                                {{ __('previous') }}</button>&ensp;
-                                            <input id="page_num" value="" onchange="onOfPage(this);"
-                                                style="width: 40px; text-align: right;" /> / <span
-                                                id="page_count"></span>&ensp;
-                                            <button type="button" class="btn btn-outline-default"
-                                                id="next">{{ __('next') }}</button>
-                                        </div>
-                                        <?php
-                                        //Khai báo biến lấy nội dung file và encode base64
+                                    <div class="col-12"><canvas class="the-canvas" id="the-canvas"></canvas></div>
+                                    {{-- <span hidden id="page_count"></span> --}}
+                                    <div class="col-12" style="padding: 5px 10px 10px 10px; text-align: center;">
+                                        <button type="button" class="btn btn-outline-default" id="prev">
+                                            {{ __('previous') }}</button>&ensp;
+                                        <input id="page_num" value="" onchange="onOfPage(this);"
+                                            style="width: 40px; text-align: right;" /> / <span
+                                            id="page_count"></span>&ensp;
+                                        <button type="button" class="btn btn-outline-default"
+                                            id="next">{{ __('next') }}</button>
+                                    </div>
+                                    <?php
+                                    //Khai báo biến lấy nội dung file và encode base64
+                                    if ($store->storePdfLink != null) {
                                         $getPDF = base64_encode(file_get_contents('storage/' . $store->storePdfLink));
-                                        ?>
+                                    } else {
+                                        $getPDF = '0';
+                                    }
+                                    ?>
                                 @endif
-                            </div>
-                        </div>
-                        <div class="form-group row justify-content-end">
-                            <div class="col-3 col-md-2">
-                                <a href="{{ route('store.edit', $store->storeId) }}"><button type="button"
-                                        class="btn bg-olive text-white w-100">{{ __('edit') }}</button></a>
                             </div>
                         </div>
                     </div>
                     <!-- /.card-body -->
+                    <div class="card-footer d-flex justify-content-center">
+                        <a class="btn btn-warning w-100 text-nowrap m-1"
+                            href="{{ route('store.edit', $store->storeId) }}">{{ __('edit') }}</a>
+                        <a class="btn bg-olive text-white w-100 text-nowrap m-1"
+                            href="{{ route('store') }}">{{ __('back') }}</a>
+                    </div>
                 </div>
                 <!-- /.card -->
             </div>
@@ -274,7 +279,7 @@
             pageNum = num;
             queueRenderPage(pageNum);
         }
-        
+
         function copyText() {
             // Get the text field
             var copyText = document.getElementById("asaboUrl");
@@ -283,13 +288,13 @@
             copyText.select();
             copyText.setSelectionRange(0, 99999); // For mobile devices
 
-             // Copy the text inside the text field
+            // Copy the text inside the text field
             navigator.clipboard.writeText(copyText.value);
 
             // Alert the copied text
-            alert("「"+copyText.value+"」URLをコピーしました");
+            alert("「" + copyText.value + "」URLをコピーしました");
         }
-  </script>
+    </script>
 @stop
 
 @section('css')

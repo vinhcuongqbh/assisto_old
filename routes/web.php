@@ -82,7 +82,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
 
     Route::group(['prefix' => 'accident'], function () {
-        Route::get('', [AccidentController::class, 'index'])->name('accident.index');
+        Route::get('', [AccidentController::class, 'index'])->name('accident');
         Route::get('{id}/show', [AccidentController::class, 'show'])->name('accident.show');
         Route::get('{id}/edit', [AccidentController::class, 'edit'])->name('accident.edit');
         Route::post('search', [AccidentController::class, 'search'])->name('accident.search');
@@ -98,7 +98,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     });  
 
     Route::group(['prefix' => 'track'], function () {
-        Route::get('', [TrackController::class, 'index'])->name('track.index');
+        Route::get('', [TrackController::class, 'index'])->name('track');
         Route::get('{id}/show', [TrackController::class, 'show'])->name('track.show');
         Route::get('{id}/edit', [TrackController::class, 'edit'])->name('track.edit');
         Route::post('search', [TrackController::class, 'search'])->name('track.search');

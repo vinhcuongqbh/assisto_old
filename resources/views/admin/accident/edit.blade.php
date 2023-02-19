@@ -416,26 +416,16 @@
                                 <p>7. 医師の診察を受ける</p>
                                 <p>軽いけがだと思ったり、自覚症状がなくても必ず医師の診断を受ける。領収書や診断書は保存しておく。</p>
                             </div>
-                            <div class="form-group row justify-content-end">
-                                <div class="col-3 col-md-3">
-                                    <button type="submit" name="action" value="draft"
-                                        class="btn bg-olive text-white w-100">{{ __('draft') }}</button>
-                                </div>
-                                <div class="col-3 col-md-3">
-                                    <button type="submit" name="action" value="report"
-                                        class="btn bg-olive text-white w-100">{{ __('report') }}</button>
-                                </div>
-                            </div>
                         </div><!-- /.card-body -->
-                    </form>
-                    {{-- <div class="card-footer">
-                        <div class="form-group row justify-content-end">
-                            <div class="col-3 col-md-3">
-                                <a href="{{ route('staff.track.update', $track->track_id) }}"><button type="button"
-                                        class="btn bg-olive text-white w-100 m-1">{{ __('update') }}</button></a>
-                            </div>
+                        <div class="card-footer d-flex justify-content-center">
+                            <button type="submit" name="action" value="draft"
+                                class="btn btn-warning w-100 text-nowrap m-1">{{ __('draft') }}</button>
+                            <button type="submit" name="action" value="report"
+                                class="btn btn-warning w-100 text-nowrap m-1">{{ __('report') }}</button>
+                            <button onclick="javascript:history.back()"
+                                class="btn bg-olive text-white w-100 text-nowrap m-1">{{ __('back') }}</button>
                         </div>
-                    </div> --}}
+                    </form>
                 </div>
                 <!-- /.card -->
             </div>

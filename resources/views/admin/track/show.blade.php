@@ -140,28 +140,16 @@
                         </table>
                     </div>
                     <!-- /.card-body -->
-                    <div class="card-footer">
-                        <div class="form-group row justify-content-end">
-                            <div class="col-3 col-md-2">
-                                <a href="{{ route('track.delete', $track->track_id) }}"
-                                    onclick="return confirm('- この店舗を削除しますか?:')"><button type="button"
-                                        class="btn bg-danger text-white w-100 m-1"
-                                        disabled="">{{ __('delete') }}</button></a>
-                            </div>
-                            <div class="col-3 col-md-2">
-                                <a href="{{ route('track.edit', $track->track_id) }}"><button type="button"
-                                        class="btn bg-olive text-white w-100 m-1">{{ __('edit') }}</button></a>
-                            </div>
-                            @if ($track->track_status == 1)
-                                <div class="col-3 col-md-2">
-                                    <a href="{{ route('track.report', $track->track_id) }}"><button type="button"
-                                            class="btn bg-olive text-white w-100 m-1">{{ __('report') }}</button></a>
-                                </div>
-                            @endif
-                        </div>
+                    <div class="card-footer d-flex justify-content-center">
+                        <a class="btn btn-warning w-100 text-nowrap m-1"
+                            href="{{ route('track.edit', $track->track_id) }}">{{ __('edit') }}</a>
+                        @if ($track->track_status == 1)
+                            <a class="btn btn-warning w-100 text-nowrap m-1"
+                                href="{{ route('track.report', $track->track_id) }}">{{ __('report') }}</a>
+                        @endif
+                        <a class="btn bg-olive text-white w-100 text-nowrap m-1"
+                            href="{{ route('track') }}">{{ __('back') }}</a>
                     </div>
-
-
                 </div>
                 <!-- /.card -->
             </div>

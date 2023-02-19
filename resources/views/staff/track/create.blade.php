@@ -30,19 +30,22 @@
                             <div class="form-group row">
                                 <label class="col-12 col-md-2 col-form-label">{{ __('date') }}</label>
                                 <div class="col-12 col-md-10">
-                                    <input type="date" class="form-control" id="date" name="date" value="{{ old('date') }}">
+                                    <input type="date" class="form-control" id="date" name="date"
+                                        value="{{ old('date') }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-12 col-md-2 col-form-label">{{ __('time') }}</label>
                                 <div class="col-12 col-md-10">
-                                    <input type="time" class="form-control" id="time" name="time" value="{{ old('time') }}">
+                                    <input type="time" class="form-control" id="time" name="time"
+                                        value="{{ old('time') }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-12 col-md-2 col-form-label">{{ __('place') }}</label>
                                 <div class="col-12 col-md-10">
-                                    <input type="text" class="form-control" id="place" name="place" value="{{ old('place') }}">
+                                    <input type="text" class="form-control" id="place" name="place"
+                                        value="{{ old('place') }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -65,7 +68,8 @@
                             <div class="form-group row">
                                 <label class="col-12 col-md-2 col-form-label">{{ __('title') }}</label>
                                 <div class="col-12 col-md-10">
-                                    <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
+                                    <input type="text" class="form-control" id="title" name="title"
+                                        value="{{ old('title') }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -85,22 +89,17 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="form-group row justify-content-end">
-                                <div class="col-3 col-md-2">
-                                    <button type="submit" name="action" value="draft"
-                                        class="btn bg-olive text-white w-100 text-nowrap">{{ __('draft') }}</button>
-                                </div>
-                                <div class="col-3 col-md-2">
-                                    <button type="submit" name="action" value="report"
-                                        class="btn bg-olive text-white w-100 text-nowrap">{{ __('report') }}</button>
-                                </div>
-                                <div class="col-3 col-md-2">
-                                    <a href="{{ route('staff.track.index') }}"><button type="button"
-                                            class="btn bg-olive text-white w-100 text-nowrap">{{ __('cancel') }}</button></a>
-                                </div>
-                            </div>
                         </div><!-- /.card-body -->
+                        <div class="card-footer d-flex justify-content-center">
+                            <button type="submit" name="action" value="report"
+                                class="btn btn-lg bg-olive text-white w-100 text-nowrap m-1"
+                                style="max-width: 400px;">{{ __('report') }}</button>
+                            <button type="submit" name="action" value="draft"
+                                class="btn btn-lg btn-warning text-white w-100 text-nowrap m-1"
+                                style="max-width: 400px;">{{ __('draft') }}</button>
+                            <a class="btn btn-lg btn-danger text-white w-100 text-nowrap m-1" style="max-width: 400px;"
+                                href="{{ route('staff.track.index') }}">{{ __('cancel') }}</a>
+                        </div>
                     </form>
                 </div><!-- /.card -->
             </div>

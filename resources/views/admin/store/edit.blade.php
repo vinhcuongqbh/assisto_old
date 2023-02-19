@@ -181,14 +181,14 @@
                                     @endif
                                 </div>  
                             </div>
-                            <div class="form-group row justify-content-end">
-                                <div class="col-4 col-md-3">
-                                    <button type="submit"
-                                        class="btn bg-olive text-white w-100">{{ __('update') }}</button>
-                                </div>
-                            </div>
                         </div>
                         <!-- /.card-body -->
+                        <div class="card-footer d-flex justify-content-center">
+                            <button type="submit"
+                                class="btn btn-warning w-100 text-nowrap m-1">{{ __('update') }}</button>
+                            <button onclick="javascript:history.back()"
+                                class="btn bg-olive text-white w-100 text-nowrap m-1">{{ __('back') }}</button>
+                        </div>
                     </form>
                 </div>
                 <!-- /.card -->

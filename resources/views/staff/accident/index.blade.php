@@ -84,7 +84,7 @@
     <script src="/vendor/jquery-validation/jquery.validate.min.js"></script>
     <script src="/vendor/jquery-validation/additional-methods.min.js"></script>
     <!-- Page specific script -->
-    <script>
+    {{-- <script>
         $(function() {
             $('#accident-search').validate({
                 rules: {
@@ -111,7 +111,7 @@
                 }
             });
         });
-    </script>
+    </script> --}}
 
     <script src="/vendor/jquery/jquery.min.js"></script>
     <!-- DataTables  & Plugins -->

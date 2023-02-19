@@ -119,7 +119,7 @@
                                     <br>
 
                                     @if (isset($trackReportMedias))
-                                        <?php                                       
+                                        <?php
                                         $img = ['jpg', 'jpeg', 'png', 'bmp'];
                                         ?>
                                         <div>
@@ -131,7 +131,8 @@
                                                                 style="width:30px; height:30x">{{ substr($trackReportMedia->track_report_media_url, strlen('File/')) }}</a>
                                                         <a
                                                             href="{{ route('track.deletefile', $trackReportMedia->track_report_media_id) }}"><button
-                                                                type="button" class="btn btn-sm bg-danger">{{ __('delete') }}</button></a>
+                                                                type="button"
+                                                                class="btn btn-sm bg-danger">{{ __('delete') }}</button></a>
                                                         <br>
                                                     </div>
                                                 @endif
@@ -141,33 +142,19 @@
 
                                 </div>
                             </div>
-                            <div class="form-group row justify-content-end">
-                                <div class="col-3 col-md-2">
-                                    <button type="submit" name="action" value="draft"
-                                        class="btn bg-olive text-white w-100 text-nowrap">{{ __('draft') }}</button>
-                                </div>
-                                <div class="col-3 col-md-2">
-                                    <button type="submit" name="action" value="report"
-                                        class="btn bg-olive text-white w-100 text-nowrap">{{ __('report') }}</button>
-                                </div>
-                                <div class="col-3 col-md-2">
-                                    <button class="btn bg-olive text-white w-100 text-nowrap"><a
-                                            href="{{ route('staff.track.show', $track->track_id) }}">{{ __('cancel') }}</a></button>
-                                </div>
-                            </div>
                         </div>
-
-
                         <!-- /.card-body -->
-                    </form>
-                    {{-- <div class="card-footer">
-                        <div class="form-group row justify-content-end">
-                            <div class="col-3 col-md-2">
-                                <a href="{{ route('staff.track.update', $track->track_id) }}"><button type="button"
-                                        class="btn bg-olive text-white w-100 m-1">{{ __('update') }}</button></a>
-                            </div>
+                        <div class="card-footer d-flex justify-content-center">
+                            <button type="submit" name="action" value="report"
+                                class="btn btn-lg bg-olive text-white w-100 text-nowrap m-1"
+                                style="max-width: 400px;">{{ __('report') }}</button>
+                            <button type="submit" name="action" value="draft"
+                                class="btn btn-lg btn-warning text-white w-100 text-nowrap m-1"
+                                style="max-width: 400px;">{{ __('draft') }}</button>
+                            <a class="btn btn-lg bg-olive text-white w-100 text-nowrap m-1" style="max-width: 400px;"
+                                href="{{ route('staff.track.show', $track->track_id) }}">{{ __('cancel') }}</a>
                         </div>
-                    </div> --}}
+                    </form>
                 </div>
                 <!-- /.card -->
             </div>

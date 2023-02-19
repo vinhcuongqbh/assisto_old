@@ -181,21 +181,14 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group row justify-content-end">
-                                <div class="col-3 col-md-2">
-                                    
-                                </div>
-                                <div class="col-3 col-md-2">
-                                    <button class="btn bg-olive text-white w-100 text-nowrap"><a href="{{ route('staff.store.show', $store->storeId) }}">{{ __('cancel') }}</a></button>
-                                </div>
-                            </div>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer d-flex justify-content-center">
-                            <a class="btn btn-lg btn-danger text-white w-100 text-nowrap m-1" href="{{ route('staff.store.show', $store->storeId) }}">{{ __('cancel') }}</a>
-                            <button type="submit" class="btn btn-lg btn-warning text-white w-100 text-nowrap m-1">{{ __('update') }}</button>
-                            <button onclick="javascript:history.back()" class="btn btn-lg bg-olive text-white w-100 text-nowrap m-1">{{ __('back') }}</button>
-                    </div>
+                            <button type="submit"
+                                class="btn btn-lg btn-warning text-white w-100 text-nowrap m-1">{{ __('update') }}</button>
+                            <button onclick="javascript:history.back()"
+                                class="btn btn-lg bg-olive text-white w-100 text-nowrap m-1">{{ __('cancel') }}</button>
+                        </div>
                     </form>
                 </div>
                 <!-- /.card -->
