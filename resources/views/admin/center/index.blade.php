@@ -57,7 +57,7 @@
                                     <th>{{ __('address') }}</th>
                                     <th>{{ __('telephone') }}</th>
                                     <th>{{ __('edit') }}</th>
-                                    <th>{{ __('delete') }}</th>
+                                    <th class="text-nowrap">{{ __('enable') }}/{{ __('disable') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,20 +69,19 @@
                                         <td>{{ $center->centerTel }}</td>
                                         <td style="text-align: center">
                                             <a href="{{ route('center.edit', $center->centerId) }}">
-                                                <button type="button" class="btn bg-olive text-white w-100">{{ __('edit') }}</button>
+                                                <button type="button" class="btn bg-warning text-white w-100 text-nowrap">{{ __('edit') }}</button>
                                             </a>
                                         </td>
                                         <td>
                                             @if ($center->isDeleted == 0)
                                                 <a href="{{ route('center.delete', $center->centerId) }}"
                                                     onclick="return confirm('{{ __('deleteCenter') }}')">
-                                                    <button type="button" class="btn btn-block btn-danger">{{ __('delete') }}</button>
+                                                    <button type="button" class="btn bg-olive text-white w-100 text-nowrap">{{ __('enable') }}</button>
                                                 </a>
                                             @else
-                                                <a href="{{ route('center.restore', $center->centerId) }}"
+                                                <a class="btn bg-danger text-white w-100 text-nowrap" href="{{ route('center.restore', $center->centerId) }}"
                                                     onclick="return confirm('{{ __('restoreCenter') }}')">
-                                                    <button type="button"
-                                                        class="btn bg-olive text-white w-100">Restore</button>
+                                                    {{ __('disable') }}
                                                 </a>
                                             @endif
                                         </td>

@@ -78,21 +78,19 @@
                                         <td style="text-align: center">
                                             <a href="{{ route('user.edit', $user->userId) }}">
                                                 <button type="button"
-                                                    class="btn bg-olive text-white w-100 text-nowrap">{{ __('edit') }}</button>
+                                                    class="btn bg-warning text-white w-100 text-nowrap">{{ __('edit') }}</button>
                                             </a>
                                         </td>
                                         <td>
                                             @if ($user->isDeleted == 0)
-                                                <a href="{{ route('user.delete', $user->userId) }}"
+                                                <a class="btn bg-olive text-white w-100 text-nowrap" href="{{ route('user.delete', $user->userId) }}"
                                                     onclick="return confirm('{{ __('deleteUser') }}')">
-                                                    <button type="button"
-                                                        class="btn btn-danger text-white w-100 text-nowrap">{{ __('disable') }}</button>
+                                                    {{ __('enable') }}
                                                 </a>
                                             @else
-                                                <a href="{{ route('user.restore', $user->userId) }}"
+                                                <a class="btn btn-danger text-white w-100 text-nowrap" href="{{ route('user.restore', $user->userId) }}"
                                                     onclick="return confirm('{{ __('restoreUser') }}')">
-                                                    <button type="button"
-                                                        class="btn bg-olive text-white w-100 text-nowrap">{{ __('enable') }}</button>
+                                                    {{ __('disable') }}
                                                 </a>
                                             @endif
                                         </td>
