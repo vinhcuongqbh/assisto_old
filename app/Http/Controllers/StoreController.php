@@ -22,6 +22,7 @@ class StoreController extends Controller
     {
         $store = Store::leftjoin('asahi_center', 'asahi_center.centerId', 'asahi_store.centerId')
             ->select('asahi_store.*', 'asahi_center.centerName')
+            ->orderby('storeId', 'desc')
             ->get();
 
         return view('admin.store.index', ['stores' => $store]);
@@ -188,15 +189,14 @@ class StoreController extends Controller
 
     public function search(Request $request)
     {
-        $store = Store::where('isDeleted', '!=', 1)
-            ->join('asahi_center', 'asahi_center.centerId', 'asahi_store.centerId')
-            ->select('asahi_store.*', 'asahi_center.centerName');
+        $store = Store::join('asahi_center', 'asahi_center.centerId', 'asahi_store.centerId')
+            ->select('asahi_store.*', 'asahi_center.centerName')
+            ->orderby('asahi_store.storeId', 'desc');
 
         if (isset($request->storeID)) $store->where('storeId', $request->storeID);
         if (isset($request->storeName)) $store->where('storeName', 'LIKE', '%' . $request->storeName . '%');
         if (isset($request->address)) $store->where('storeAddr', 'LIKE', '%' . $request->address . '%');
-        if (isset($request->telephone)) $store->where('storeTel', $request->telephone);
-        if (isset($request->centerID)) $store->where('asahi_center.centerId', $request->centerID);
+        if (isset($request->telephone)) $store->where('storeTel', 'LIKE', '%' . $request->telephone . '%');
         if (isset($request->centerName)) $store->where('centerName', 'LIKE', '%' . $request->centerName . '%');
 
         $store = $store->get();

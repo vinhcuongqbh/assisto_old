@@ -16,7 +16,7 @@ class CenterController extends Controller
      */
     public function index()
     {
-        $center = Center::all();
+        $center = Center::orderBy('centerId', 'desc')->get();
         return view('admin.center.index', ['centers' => $center]);
     }
 
@@ -113,7 +113,7 @@ class CenterController extends Controller
 
     public function search(Request $request)
     {
-        $center = Center::query();
+        $center = Center::orderBy('centerId','desc');
 
         if (isset($request->centerID)) $center->where('centerId', $request->centerID);
         if (isset($request->centerName)) $center->where('centerName', 'LIKE', '%' . $request->centerName . '%');

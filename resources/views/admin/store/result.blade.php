@@ -25,22 +25,28 @@
                             @csrf
                             <div class="row">
                                 <div class="col-12 col-xl-2 my-2">
-                                    <input type="text" class="form-control" id="storeID" name="storeID" placeholder="{{ __('storeID') }}">
+                                    <input type="text" class="form-control" id="storeID" name="storeID"
+                                        placeholder="{{ __('storeID') }}">
                                 </div>
                                 <div class="col-12 col-xl-2 my-2">
-                                    <input type="text" class="form-control" id="storeName" name="storeName" placeholder="{{ __('storeName') }}">
+                                    <input type="text" class="form-control" id="storeName" name="storeName"
+                                        placeholder="{{ __('storeName') }}">
                                 </div>
                                 <div class="col-12 col-xl-2 my-2">
-                                    <input type="text" class="form-control" id="address" name="address" placeholder="{{ __('address') }}">
+                                    <input type="text" class="form-control" id="address" name="address"
+                                        placeholder="{{ __('address') }}">
                                 </div>
                                 <div class="col-12 col-xl-2 my-2">
-                                    <input type="text" class="form-control" id="telephone" name="telephone" placeholder="{{ __('telephone') }}">
+                                    <input type="text" class="form-control" id="telephone" name="telephone"
+                                        placeholder="{{ __('telephone') }}">
                                 </div>
                                 <div class="col-12 col-xl-2 my-2">
-                                    <input type="text" class="form-control" id="centerName" name="centerID" placeholder="{{ __('centerName') }}">
+                                    <input type="text" class="form-control" id="centerName" name="centerID"
+                                        placeholder="{{ __('centerName') }}">
                                 </div>
                                 <div class="col-12 col-xl-2 my-2">
-                                    <button type="submit" class="btn bg-olive text-white w-100">{{ __('search') }}</button>
+                                    <button type="submit"
+                                        class="btn bg-olive text-white w-100">{{ __('search') }}</button>
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -66,7 +72,7 @@
                                     <th>{{ __('delete') }}</th>
                                 </tr>
                             </thead>
-                            <tbody>                               
+                            <tbody>
                                 @foreach ($stores as $store)
                                     <tr>
                                         <td style="text-align: center"><a
@@ -86,14 +92,14 @@
                                             @if ($store->isDeleted == 0)
                                                 <a href="{{ route('store.delete', $store->storeId) }}"
                                                     onclick="return confirm('{{ __('deleteStore') }}')">
-                                                    <button type="button" class="btn btn-block btn-danger"
-                                                        disabled>{{ __('delete') }}</button>
+                                                    <button type="button"
+                                                        class="btn btn-block btn-danger">{{ __('delete') }}</button>
                                                 </a>
                                             @else
                                                 <a href="{{ route('store.restore', $store->storeId) }}"
                                                     onclick="return confirm('{{ __('restoreStore') }}')">
-                                                    <button type="button" class="btn bg-olive text-white w-100"
-                                                        disabled>{{ __('restore') }}</button>
+                                                    <button type="button"
+                                                        class="btn bg-olive text-white w-100">{{ __('restore') }}</button>
                                                 </a>
                                             @endif
                                         </td>

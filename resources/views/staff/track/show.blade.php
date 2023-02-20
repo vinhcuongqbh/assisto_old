@@ -138,16 +138,16 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer d-flex justify-content-center">
-                        <a class="w-100 m-1" href="{{ route('staff.track.delete', $track->track_id) }}"
-                            onclick="return confirm('- この店舗を削除しますか?:')"><button type="button"
-                                class="btn bg-danger text-white text-nowrap w-100 btn-lg">{{ __('delete') }}</button></a>
-
-                        <a class="btn bg-warning text-white text-nowrap w-100 btn-lg m-1"
-                            href="{{ route('staff.track.edit', $track->track_id) }}">{{ __('edit') }}</a>
                         @if ($track->track_status == 1)
                             <a class="btn bg-olive text-white text-nowrap w-100 btn-lg m-1"
                                 href="{{ route('staff.track.report', $track->track_id) }}">{{ __('report') }}</a>
+                            <a class="w-100 m-1" href="{{ route('staff.track.delete', $track->track_id) }}"
+                                onclick="return confirm('{{ __('confirmDelete') }}')"><button type="button"
+                                    class="btn bg-danger text-white text-nowrap w-100 btn-lg">{{ __('delete') }}</button></a>
                         @endif
+                        <a class="btn bg-warning text-white text-nowrap w-100 btn-lg m-1"
+                            href="{{ route('staff.track.edit', $track->track_id) }}">{{ __('edit') }}</a>
+
                         <a class="btn bg-olive text-white text-nowrap w-100 btn-lg m-1"
                             href="{{ route('staff.track.index') }}">{{ __('back') }}</a>
                     </div>
