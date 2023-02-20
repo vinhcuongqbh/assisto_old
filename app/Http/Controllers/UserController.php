@@ -23,12 +23,14 @@ class UserController extends Controller
                 ->leftjoin('asahi_center', 'asahi_center.centerId', 'moz_users.centerId')
                 ->where('moz_users.roleId', '<>', 1)
                 ->select('moz_users.*', 'moz_roles.roleName', 'asahi_center.centerName')
+                ->orderBy('userId', 'desc')
                 ->get();
         } else {
             //Hiển thị danh sách Tài khoản đang sử dụng
             $user = User::leftjoin('moz_roles', 'moz_roles.roleId', 'moz_users.roleId')
                 ->leftjoin('asahi_center', 'asahi_center.centerId', 'moz_users.centerId')
                 ->select('moz_users.*', 'moz_roles.roleName', 'asahi_center.centerName')
+                ->orderBy('userId', 'desc')
                 ->get();
         }
 
@@ -38,8 +40,11 @@ class UserController extends Controller
 
     public function create()
     {
-        $userRole = Role::all();
+
         $center = Center::all();
+        $userRole = Role::where('roleId', '!=', 1)->get();
+
+
         return view('admin.user.create', [
             'userRole' => $userRole,
             'center' => $center,
@@ -92,8 +97,10 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::where('userId', $id)->first();
-        $userRole = Role::all();
+
         $center = Center::all();
+        $userRole = Role::where('roleId', '!=', 1)->get();
+
 
         return view('admin.user.edit', [
             'user' => $user,
@@ -170,10 +177,11 @@ class UserController extends Controller
 
     public function search(Request $request)
     {
-        
+
         $user = User::leftjoin('moz_roles', 'moz_roles.roleId', 'moz_users.roleId')
             ->leftjoin('asahi_center', 'asahi_center.centerId', 'moz_users.centerId')
-            ->select('moz_users.*', 'moz_roles.roleName', 'asahi_center.centerName');
+            ->select('moz_users.*', 'moz_roles.roleName', 'asahi_center.centerName')
+            ->orderBy('userId', 'desc');
 
         if (isset($request->userID)) $user->where('userId', $request->userID);
         if (isset($request->userName)) $user->where('name', 'LIKE', '%' . $request->userName . '%');

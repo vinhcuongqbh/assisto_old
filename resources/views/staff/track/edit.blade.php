@@ -145,12 +145,14 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer d-flex justify-content-center">
+                            @if ($accident->acc_status == 1)
+                                <button type="submit" name="action" value="draft"
+                                    class="btn btn-lg btn-warning text-white w-100 text-nowrap m-1"
+                                    style="max-width: 400px;">{{ __('draft') }}</button>
+                            @endif
                             <button type="submit" name="action" value="report"
                                 class="btn btn-lg bg-olive text-white w-100 text-nowrap m-1"
                                 style="max-width: 400px;">{{ __('report') }}</button>
-                            <button type="submit" name="action" value="draft"
-                                class="btn btn-lg btn-warning text-white w-100 text-nowrap m-1"
-                                style="max-width: 400px;">{{ __('draft') }}</button>
                             <a class="btn btn-lg bg-olive text-white w-100 text-nowrap m-1" style="max-width: 400px;"
                                 href="{{ route('staff.track.show', $track->track_id) }}">{{ __('back') }}</a>
                         </div>

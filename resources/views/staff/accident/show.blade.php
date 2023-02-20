@@ -425,15 +425,16 @@
 
                     </div><!-- /.card-body -->
                     <div class="card-footer d-flex justify-content-center">
-                        <a href="{{ route('staff.accident.delete', $accident->acc_id) }}"
-                            onclick="return confirm('{{ __('confirmDelete') }}')"
-                            class="btn bg-danger text-white text-nowrap w-100 btn-lg m-1">{{ __('delete') }}</a>
-                        <a href="{{ route('staff.accident.edit', $accident->acc_id) }}"
-                            class="btn bg-warning text-white text-nowrap w-100 btn-lg m-1">{{ __('edit') }}</a>
                         @if ($accident->acc_status == 1)
+                            <a href="{{ route('staff.accident.delete', $accident->acc_id) }}"
+                                onclick="return confirm('{{ __('confirmDelete') }}')"
+                                class="btn bg-danger text-white text-nowrap w-100 btn-lg m-1">{{ __('delete') }}</a>
                             <a href="{{ route('staff.accident.report', $accident->acc_id) }}"
                                 class="btn bg-olive text-white  text-nowrap w-100 btn-lg m-1">{{ __('report') }}</a>
                         @endif
+                        <a href="{{ route('staff.accident.edit', $accident->acc_id) }}"
+                            class="btn bg-warning text-white text-nowrap w-100 btn-lg m-1">{{ __('edit') }}</a>
+                        
                         <a class="btn bg-olive text-white text-nowrap w-100 btn-lg m-1"
                             href="{{ route('staff.accident.index') }}">{{ __('back') }}</a>
                     </div>
