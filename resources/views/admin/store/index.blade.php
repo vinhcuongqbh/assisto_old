@@ -69,7 +69,7 @@
                                     <th>{{ __('telephone') }}</th>
                                     <th>{{ __('centerName') }}</th>
                                     <th>{{ __('edit') }}</th>
-                                    <th>{{ __('delete') }}</th>
+                                    <th>{{ __('enable') }}/{{ __('disable') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -85,21 +85,17 @@
                                         <td style="text-align: center">
                                             <a href="{{ route('store.edit', $store->storeId) }}">
                                                 <button type="button"
-                                                    class="btn bg-olive text-white w-100">{{ __('edit') }}</button>
+                                                    class="btn bg-warning text-white w-100 text-nowrap">{{ __('edit') }}</button>
                                             </a>
                                         </td>
                                         <td>
                                             @if ($store->isDeleted == 0)
-                                                <a href="{{ route('store.delete', $store->storeId) }}"
-                                                    onclick="return confirm('{{ __('deleteStore') }}')">
-                                                    <button type="button"
-                                                        class="btn btn-block btn-danger">{{ __('delete') }}</button>
+                                                <a class="btn bg-olive text-white w-100 text-nowrap" href="{{ route('store.delete', $store->storeId) }}"
+                                                    onclick="return confirm('{{ __('deleteStore') }}')">{{ __('enable') }}
                                                 </a>
                                             @else
-                                                <a href="{{ route('store.restore', $store->storeId) }}"
-                                                    onclick="return confirm('{{ __('restoreStore') }}')">
-                                                    <button type="button"
-                                                        class="btn bg-olive text-white w-100">{{ __('restore') }}</button>
+                                                <a class="btn btn-danger text-white w-100 text-nowrap" href="{{ route('store.restore', $store->storeId) }}"
+                                                    onclick="return confirm('{{ __('restoreStore') }}')">{{ __('disable') }}
                                                 </a>
                                             @endif
                                         </td>

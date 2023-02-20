@@ -3,7 +3,7 @@
 @section('title', 'Slogan')
 
 @section('heading')
-    {{ __('slogan') }}
+    {{ __('sloganSetting') }}
 @stop
 
 @section('content')
@@ -25,7 +25,7 @@
                         <div class="card-body">
                             <div class="form-group row">
                                 <div class="col-sm-3">
-                                    <label for="slogan">{{ __('slogan') }}</label>
+                                    <label for="slogan">{{ __('sloganInput') }}</label>
                                 </div>
                                 <div class="col-sm-9">
                                     <textarea id="slogan" name="slogan" class="form-control">@if (isset($setting)) {{ $setting->slogan }} @endif</textarea>

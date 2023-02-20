@@ -152,7 +152,7 @@
                                 class="btn btn-lg btn-warning text-white w-100 text-nowrap m-1"
                                 style="max-width: 400px;">{{ __('draft') }}</button>
                             <a class="btn btn-lg bg-olive text-white w-100 text-nowrap m-1" style="max-width: 400px;"
-                                href="{{ route('staff.track.show', $track->track_id) }}">{{ __('cancel') }}</a>
+                                href="{{ route('staff.track.show', $track->track_id) }}">{{ __('back') }}</a>
                         </div>
                     </form>
                 </div>

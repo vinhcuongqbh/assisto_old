@@ -115,7 +115,7 @@
                         <li class="nav-item">
                             <a href="/admin/setting/slogan" class="nav-link">
                                 <i class="fa fa-bookmark nav-icon"></i>
-                                <p>{{ __('slogan') }}</p>
+                                <p>{{ __('sloganSetting') }}</p>
                             </a>
                         </li>
                         <li class="nav-item">
