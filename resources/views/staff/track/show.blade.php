@@ -93,7 +93,7 @@
                                 <tr>
                                     <td class="text-bold" colspan="2">
                                         {{ __('attachment') }}
-                                    
+
                                         @if (isset($trackReportMedias))
                                             <?php
                                             $img = ['jpg', 'jpeg', 'png', 'bmp'];
@@ -113,7 +113,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="text-bold" colspan="2">                                    
+                                    <td class="text-bold" colspan="2">
                                         @if (isset($trackReportMedias))
                                             <?php
                                             $img = ['jpg', 'jpeg', 'png', 'bmp'];
@@ -140,8 +140,7 @@
                     <div class="card-footer d-flex justify-content-center">
                         <a class="w-100 m-1" href="{{ route('staff.track.delete', $track->track_id) }}"
                             onclick="return confirm('- この店舗を削除しますか?:')"><button type="button"
-                                class="btn bg-danger text-white text-nowrap w-100 btn-lg"
-                                disabled>{{ __('delete') }}</button></a>
+                                class="btn bg-danger text-white text-nowrap w-100 btn-lg">{{ __('delete') }}</button></a>
 
                         <a class="btn bg-warning text-white text-nowrap w-100 btn-lg m-1"
                             href="{{ route('staff.track.edit', $track->track_id) }}">{{ __('edit') }}</a>
