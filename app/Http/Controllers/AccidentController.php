@@ -396,10 +396,58 @@ class AccidentController extends Controller
 
     public function destroy($id)
     {
-        //
+        $accident = Accident::where('acc_id', $id)->first();
+        $accidentPeople = AccidentPeople::where('acc_id', $accident->acc_id)->first();
+        $accidentCar = AccidentCar::where('acc_involved_people_id', $accidentPeople->acc_involved_people_id)->first();
+
+        $this->deleteCarImages($accidentCar->involved_car_id);
+        $this->deleteInsuranceImages($accidentPeople->acc_involved_people_id);
+        $this->deleteAccidentImages($accident->acc_id);
+        $accidentCar->delete();
+        $accidentPeople->delete();
+        $accident->delete();
+
+        if (Auth::user()->roleId != 3) return redirect()->route('accident');
+        else return redirect()->route('staff.accident.index');
     }
 
+    //Xóa các ảnh thuộc Hồ sơ CarAccidentImage
+    public function deleteCarImages($id)
+    {
+        $accidentCarMedia = AccidentCarMedia::where('involved_car_id', $id)->get();
+        foreach ($accidentCarMedia as $i) {
+            if (Storage::exists('public/' . $i->car_media_url)) {
+                Storage::delete('public/' . $i->car_media_url);
+            }
+            $i->delete();
+        }
+    }
 
+    //Xóa các ảnh thuộc Hồ sơ InsuranceImage
+    public function deleteInsuranceImages($id)
+    {
+        $accidentPeopleMedia = AccidentPeopleMedia::where('acc_involved_people_id', $id)->get();
+        foreach ($accidentPeopleMedia as $i) {
+            if (Storage::exists('public/' . $i->insurance_media_url)) {
+                Storage::delete('public/' . $i->insurance_media_url);
+            }
+            $i->delete();
+        }
+    }
+
+    //Xóa các ảnh thuộc Hồ sơ AccidentImage
+    public function deleteAccidentImages($id)
+    {
+        $accidentMedia = AccidentMedia::where('acc_id', $id)->get();
+        foreach ($accidentMedia as $i) {
+            if (Storage::exists('public/' . $i->acc_media_url)) {
+                Storage::delete('public/' . $i->acc_media_url);
+            }
+            $i->delete();
+        }
+    }
+
+    //Xóa ảnh thuộc Hồ sơ CarImage
     public function deleteCarImage($id)
     {
         $accidentCarMedia = AccidentCarMedia::where('car_media_id', $id)->first();

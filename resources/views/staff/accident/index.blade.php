@@ -36,7 +36,7 @@
                         <hr> --}}
 
                         <table id="search-table" class="table table-bordered table-striped m-0">
-                            <thead>
+                            <thead style="text-align:center">
                                 <tr>
                                     <th>ID</th>
                                     <th>{{ __('information') }}</th>

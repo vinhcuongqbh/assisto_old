@@ -133,5 +133,6 @@
     "information":"Information",
     "checked":"OK",
     "enable":"Enable",
-    "disable":"Disable"
+    "disable":"Disable",
+    "confirmDelete": "Are you sure you want to delete this item?"
 }

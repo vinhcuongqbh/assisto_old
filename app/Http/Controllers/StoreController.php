@@ -65,6 +65,7 @@ class StoreController extends Controller
         $store->asahiSupplement1 = $request->add1;
         $store->asahiSupplement2 = $request->add2;
         $store->comment = $request->comment;
+        $store->isDeleted = 0;
         if (isset($path)) $store->storePdfLink = $path;
         $store->insertDate = Carbon::now();
         $store->save();
@@ -165,16 +166,30 @@ class StoreController extends Controller
     {
         //Tìm Cửa hàng 
         $store = Store::where('storeId', $id)->first();
-        $store->delete();
+        $store->isDeleted = 1;
+        $store->save();
 
         if (Auth::user()->roleId != 3) return redirect()->route('store');
-        else return redirect()->route('staff.store.search');
+        else return redirect()->route('staff.store');
+    }
+
+
+    public function restore($id)
+    {
+        //Tìm Cửa hàng 
+        $store = Store::where('storeId', $id)->first();
+        $store->isDeleted = 0;
+        $store->save();
+
+        if (Auth::user()->roleId != 3) return redirect()->route('store');
+        else return redirect()->route('staff.store');
     }
 
 
     public function search(Request $request)
     {
-        $store = Store::join('asahi_center', 'asahi_center.centerId', 'asahi_store.centerId')
+        $store = Store::where('isDeleted', '!=', 1)
+            ->join('asahi_center', 'asahi_center.centerId', 'asahi_store.centerId')
             ->select('asahi_store.*', 'asahi_center.centerName');
 
         if (isset($request->storeID)) $store->where('storeId', $request->storeID);

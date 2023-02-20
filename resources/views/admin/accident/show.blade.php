@@ -508,6 +508,9 @@
                         </div>
                     </div><!-- /.card-body -->
                     <div class="card-footer d-flex justify-content-center">
+                        <a class="btn btn-danger w-100 text-nowrap m-1"
+                            onclick="return confirm('{{ __('confirmDelete') }}')"
+                            href="{{ route('staff.accident.delete', $accident->acc_id) }} ">{{ __('delete') }}</a>
                         <a class="btn btn-warning w-100 text-nowrap m-1"
                             href="{{ route('staff.accident.edit', $accident->acc_id) }}">{{ __('edit') }}</a>
                         @if ($accident->acc_status == 1)

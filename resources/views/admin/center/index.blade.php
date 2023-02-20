@@ -76,13 +76,13 @@
                                             @if ($center->isDeleted == 0)
                                                 <a href="{{ route('center.delete', $center->centerId) }}"
                                                     onclick="return confirm('{{ __('deleteCenter') }}')">
-                                                    <button type="button" class="btn btn-block btn-danger" disabled>{{ __('delete') }}</button>
+                                                    <button type="button" class="btn btn-block btn-danger">{{ __('delete') }}</button>
                                                 </a>
                                             @else
-                                                <a href="{{ route('center.recenter', $center->centerId) }}"
+                                                <a href="{{ route('center.restore', $center->centerId) }}"
                                                     onclick="return confirm('{{ __('restoreCenter') }}')">
                                                     <button type="button"
-                                                        class="btn bg-olive text-white w-100" disabled>Restore</button>
+                                                        class="btn bg-olive text-white w-100">Restore</button>
                                                 </a>
                                             @endif
                                         </td>

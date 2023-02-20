@@ -141,6 +141,8 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer d-flex justify-content-center">
+                        <a class="btn btn-danger w-100 text-nowrap m-1"
+                            href="{{ route('track.delete', $track->track_id) }}">{{ __('delete') }}</a>
                         <a class="btn btn-warning w-100 text-nowrap m-1"
                             href="{{ route('track.edit', $track->track_id) }}">{{ __('edit') }}</a>
                         @if ($track->track_status == 1)

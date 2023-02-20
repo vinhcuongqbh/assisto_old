@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\Models\Center;
 use Carbon\Carbon;
@@ -21,19 +20,19 @@ class CenterController extends Controller
         return view('admin.center.index', ['centers' => $center]);
     }
 
-    
+
     public function create()
-    {        
+    {
         return view('admin.center.create');
     }
 
-    
+
     public function store(Request $request)
     {
         //Kiểm tra thông tin đầu vào
         $validated = $request->validate([
             'centerId' => 'required|unique:App\Models\Center,centerId',
-            'centerName' => 'required',          
+            'centerName' => 'required',
         ]);
 
         //Tạo Trung tâm mới
@@ -42,20 +41,21 @@ class CenterController extends Controller
         $center->centerName = $request->centerName;
         $center->centerTel = $request->centerTel;
         $center->centerAddr = $request->centerAddr;
+        $center->isDeleted = 0;
         $center->insertDate = Carbon::now();
         $center->save();
 
         return redirect()->route('center.show', ['id' => $center->centerId]);
     }
 
-    
+
     public function show($id)
     {
         $center = Center::where('centerId', $id)->first();
-        return view('admin.center.show',['center' => $center]);
+        return view('admin.center.show', ['center' => $center]);
     }
 
-    
+
     public function edit($id)
     {
         $center = Center::where('centerId', $id)->first();
@@ -63,7 +63,7 @@ class CenterController extends Controller
         return view('admin.center.edit', ['center' => $center]);
     }
 
-    
+
     public function update(Request $request, $id)
     {
         //Tìm thông tin Trung tâm
@@ -75,10 +75,10 @@ class CenterController extends Controller
                 'required',
                 Rule::unique('asahi_center', 'centerId')->ignore($center->id)
             ],
-            'centerName' => 'required',  
+            'centerName' => 'required',
         ]);
 
-        
+
         $center->centerId = $request->centerId;
         $center->centerName = $request->centerName;
         $center->centerTel = $request->centerTel;
@@ -89,15 +89,25 @@ class CenterController extends Controller
         return redirect()->route('center.show', ['id' => $center->centerId]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        //Tìm Cửa hàng 
+        $center = Center::where('centerId', $id)->first();
+        $center->isDeleted = 1;
+        $center->save();
+
+        return redirect()->route('center');
+    }
+
+
+    public function restore($id)
+    {
+        //Tìm Cửa hàng 
+        $center = Center::where('centerId', $id)->first();
+        $center->isDeleted = 0;
+        $center->save();
+
+        return redirect()->route('center');
     }
 
 
@@ -106,12 +116,12 @@ class CenterController extends Controller
         $center = Center::query();
 
         if (isset($request->centerID)) $center->where('centerId', $request->centerID);
-        if (isset($request->centerName)) $center->where('centerName', 'LIKE', '%'.$request->centerName.'%');
-        if (isset($request->address)) $center->where('centerAddr', 'LIKE', '%'.$request->address.'%');
-        if (isset($request->telephone)) $center->where('centerTel', $request->telephone);                
-        
-        $center = $center->get(); 
-        
-        if (Auth::user()->roleId != 3) return view('admin.center.result', ['centers' => $center]);
+        if (isset($request->centerName)) $center->where('centerName', 'LIKE', '%' . $request->centerName . '%');
+        if (isset($request->address)) $center->where('centerAddr', 'LIKE', '%' . $request->address . '%');
+        if (isset($request->telephone)) $center->where('centerTel', $request->telephone);
+
+        $center = $center->get();
+
+        return view('admin.center.result', ['centers' => $center]);
     }
 }

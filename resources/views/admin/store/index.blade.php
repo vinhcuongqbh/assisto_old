@@ -39,7 +39,7 @@
                                 <div class="col-12 col-sm-2 my-2">
                                     <input type="text" class="form-control" id="telephone" name="telephone"
                                         placeholder="{{ __('telephone') }}">
-                                </div>                                
+                                </div>
                                 <div class="col-12 col-sm-2 my-2">
                                     <input type="text" class="form-control" id="centerName" name="centerName"
                                         placeholder="{{ __('centerName') }}">
@@ -92,14 +92,14 @@
                                             @if ($store->isDeleted == 0)
                                                 <a href="{{ route('store.delete', $store->storeId) }}"
                                                     onclick="return confirm('{{ __('deleteStore') }}')">
-                                                    <button type="button" class="btn btn-block btn-danger"
-                                                        disabled>{{ __('delete') }}</button>
+                                                    <button type="button"
+                                                        class="btn btn-block btn-danger">{{ __('delete') }}</button>
                                                 </a>
                                             @else
                                                 <a href="{{ route('store.restore', $store->storeId) }}"
                                                     onclick="return confirm('{{ __('restoreStore') }}')">
-                                                    <button type="button" class="btn bg-olive text-white w-100"
-                                                        disabled>{{ __('restore') }}</button>
+                                                    <button type="button"
+                                                        class="btn bg-olive text-white w-100">{{ __('restore') }}</button>
                                                 </a>
                                             @endif
                                         </td>

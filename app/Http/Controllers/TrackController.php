@@ -227,7 +227,24 @@ class TrackController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $track = Track::where('track_id', $id)->first();
+        $this->deleteTrackImages($track->track_id);
+        $track->delete();
+        
+        if (Auth::user()->roleId != 3) return redirect()->route('track');
+        else return redirect()->route('staff.track.index');
+    }
+
+    //Xóa ảnh thuộc hồ sơ TrackImage
+    public function deleteTrackImages($id)
+    {
+        $trackReportMedia = TrackReportMedia::where('track_report_id', $id)->get();
+        foreach ($trackReportMedia as $i) {
+            if (Storage::exists('public/' . $i->track_report_media_url)) {
+                Storage::delete('public/' . $i->track_report_media_url);
+            }
+            $i->delete();
+        }
     }
 
     public function deletefile($id)

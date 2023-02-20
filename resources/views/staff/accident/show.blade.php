@@ -422,18 +422,20 @@
                             <p>7. 医師の診察を受ける</p>
                             <p>軽いけがだと思ったり、自覚症状がなくても必ず医師の診断を受ける。領収書や診断書は保存しておく。</p>
                         </div>
-                        
+
                     </div><!-- /.card-body -->
                     <div class="card-footer d-flex justify-content-center">
-                            <a href="{{ route('staff.accident.delete', $accident->acc_id) }}"
-                                onclick="return confirm('- この店舗を削除しますか?:')" class="btn bg-danger text-white text-nowrap w-100 btn-lg m-1"
-                                    disabled>{{ __('delete') }}</a>
-                            <a href="{{ route('staff.accident.edit', $accident->acc_id) }}" class="btn bg-warning text-white text-nowrap w-100 btn-lg m-1">{{ __('edit') }}</a>
+                        <a href="{{ route('staff.accident.delete', $accident->acc_id) }}"
+                            onclick="return confirm('{{ __('confirmDelete') }}')"
+                            class="btn bg-danger text-white text-nowrap w-100 btn-lg m-1">{{ __('delete') }}</a>
+                        <a href="{{ route('staff.accident.edit', $accident->acc_id) }}"
+                            class="btn bg-warning text-white text-nowrap w-100 btn-lg m-1">{{ __('edit') }}</a>
                         @if ($accident->acc_status == 1)
-                                <a href="{{ route('staff.accident.report', $accident->acc_id) }}" class="btn bg-olive text-white  text-nowrap w-100 btn-lg m-1">{{ __('report') }}</a>
+                            <a href="{{ route('staff.accident.report', $accident->acc_id) }}"
+                                class="btn bg-olive text-white  text-nowrap w-100 btn-lg m-1">{{ __('report') }}</a>
                         @endif
-                            <a class="btn bg-olive text-white text-nowrap w-100 btn-lg m-1"
-                                    href="{{ route('staff.accident.index') }}">{{ __('back') }}</a>
+                        <a class="btn bg-olive text-white text-nowrap w-100 btn-lg m-1"
+                            href="{{ route('staff.accident.index') }}">{{ __('back') }}</a>
                     </div>
                 </div>
                 <!-- /.card -->
