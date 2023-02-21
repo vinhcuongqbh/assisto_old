@@ -21,13 +21,6 @@
                 <div class="card card-default">
                     <div class="card-header">
                         <h2 class="card-title text-bold text-lg">{{ __('storeInformation') }}</h2>
-                        <div class="card-tools">
-                            <div class="input-group mb-3">
-                                <input id="asaboUrl" type="text" class="form-control"
-                                    value="https://as.vivujp.com/staff/store/{{ $store->storeId }}/show" hidden="true">
-                                <a onclick="copyText()" class="btn btn-info btn-sm">URLコピー</a>
-                            </div>
-                        </div>
                     </div>
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -41,6 +34,20 @@
                     <div class="card-body p-0 m-0">
                         <table class="table table-striped projects p-0 m-0">
                             <tbody>
+                                <tr>
+                                    <td class="text-bold" style="width: 30%">
+                                        ULR
+                                    </td>
+                                    <td style="width: 70%">
+                                        <div class="input-group">
+                                            <input id="asaboUrl" type="text" class="form-control"
+                                                   value="https://as.vivujp.com/staff/store/{{ $store->storeId }}/show" disabled="true">
+                                            <span class="input-group-append">
+                                                <button onclick="copyText()" class="btn btn-info btn-sm">Copy</button>
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td class="text-bold" style="width: 30%">
                                         {{ __('storeID') }}
@@ -267,9 +274,25 @@
         }
 
         function copyText() {
-            var copyText = document.getElementById("asaboUrl");
-            NativeAndroid.copyToClipboard(copyText.value);
-            alert("「" + copyText.value + "」URLをコピーしました");
+            const userAgent = navigator.userAgent;
+            if(/Asabo/i.test(userAgent)){
+                var copyText = document.getElementById("asaboUrl");
+                NativeAndroid.copyToClipboard(copyText.value);
+                alert("「" + copyText.value + "」URLをコピーしました");
+            }else{
+                // Get the text field
+                var copyText = document.getElementById("asaboUrl");
+
+                // Select the text field
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); // For mobile devices
+
+                // Copy the text inside the text field
+                navigator.clipboard.writeText(copyText.value);
+
+                // Alert the copied text
+                alert("「" + copyText.value + "」URLをコピーしました");
+            }
         }
     </script>
 @stop
